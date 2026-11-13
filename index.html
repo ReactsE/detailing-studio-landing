@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Детейлинг-студия: полировка, керамика и оклейка пленкой в Москве</title>
+<title>Шаблон сайта детейлинг-студии</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2305070d'/%3E%3Cpath d='M16 4C16 4 7 14 7 20a9 9 0 0 0 18 0C25 14 16 4 16 4Z' fill='none' stroke='%2318c8ff' stroke-width='2.2'/%3E%3Ccircle cx='16' cy='20' r='3' fill='%2318c8ff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -317,13 +317,12 @@ nav a:hover:after { width: 100%; }
 .svc-bottom {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   padding-top: 18px;
 }
-.svc-price { font-family: 'Unbounded', sans-serif; font-size: 18px; font-weight: 700; color: var(--a); }
 
-/* СЛАЙДЕР ДО / ПОСЛЕ (УЛЬТРА-РЕАЛИСТИЧНЫЙ ВИЗУАЛ) */
+/* СЛАЙДЕР ДО / ПОСЛЕ */
 .ba-container {
   position: relative;
   height: clamp(280px, 48vw, 480px);
@@ -343,7 +342,7 @@ nav a:hover:after { width: 100%; }
   padding: 28px;
   font-family: 'Unbounded', sans-serif;
 }
-/* Слой ПОСЛЕ (Зеркальный керамический блеск) */
+/* Слой ПОСЛЕ */
 .ba-after {
   background: 
     radial-gradient(circle at 65% 35%, rgba(24, 200, 255, 0.35), transparent 45%),
@@ -362,7 +361,7 @@ nav a:hover:after { width: 100%; }
   filter: blur(14px);
   pointer-events: none;
 }
-/* Слой ДО (Царапины и помутнение кузова) */
+/* Слой ДО */
 .ba-before {
   background: 
     radial-gradient(circle at 35% 50%, rgba(255, 255, 255, 0.04) 0%, transparent 60%),
@@ -420,19 +419,6 @@ nav a:hover:after { width: 100%; }
   z-index: 4;
 }
 
-/* ЭТАПЫ РАБОТЫ */
-.step-card { counter-increment: steps; }
-.step-card:before {
-  content: "0" counter(steps);
-  font-family: 'Unbounded', sans-serif;
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--a);
-  display: block;
-  margin-bottom: 12px;
-  opacity: 0.9;
-}
-
 /* СЛАЙДЕР ОТЗЫВОВ */
 .rv-viewport { overflow: hidden; margin-top: 30px; }
 .rv-track { display: flex; transition: transform 0.65s cubic-bezier(0.65, 0, 0.35, 1); }
@@ -443,7 +429,7 @@ nav a:hover:after { width: 100%; }
 .rv-author { display: flex; justify-content: space-between; align-items: center; }
 .rv-name { font-weight: 700; color: var(--t); font-size: 16px; }
 .rv-car { color: var(--a); font-size: 14px; }
-.dots { display: flex; gap: 8px; margin-top: 24px; justify-content: center; }
+.dots { display: flex; gap: 8px; justify-content: center; }
 .dot { width: 28px; height: 4px; background: var(--line); border-radius: 2px; cursor: pointer; transition: 0.3s; }
 .dot.on { background: var(--a); width: 44px; }
 
@@ -596,12 +582,13 @@ footer nav { gap: 24px; }
       <path d="M16 4C16 4 7 14 7 20a9 9 0 0 0 18 0C25 14 16 4 16 4Z"/>
       <circle cx="16" cy="20" r="3" fill="#18c8ff"/>
     </svg>
-    ДЕТЕЙЛИНГ СТУДИЯ 2.0
+    ДЕТЕЙЛИНГ СТУДИЯ
   </a>
   <nav id="nv">
     <a href="#about">О студии</a>
     <a href="#services">Услуги</a>
     <a href="#gallery">До / После</a>
+    <a href="#why">Преимущества</a>
     <a href="#reviews">Отзывы</a>
     <a href="#faq">Вопросы</a>
     <a href="#contacts">Контакты</a>
@@ -614,13 +601,13 @@ footer nav { gap: 24px; }
 <section id="hero">
   <div class="wrap">
     <div class="pill-badge rv">
-      <span class="pill-dot"></span> Студия кузовного ухода в Москве
+      <span class="pill-dot"></span> Студия детейлинга
     </div>
     <h1 class="rv">Полировка кузова, керамика и оклейка <span class="grad-text">без голограмм</span></h1>
-    <p class="rv">Устраняем круговую паутину с лака, защищаем кузов от сколов и реагентов полиуретановой пленкой. Замеряем толщину ЛКП перед началом работ и оформляем письменную гарантию.</p>
+    <p class="rv">Профессиональный уход за экстерьером и интерьером автомобиля. Восстановление блеска лака и защита кузова от внешних воздействий.</p>
     <div class="hero-btns rv">
       <a href="#book" class="btn mag">Записаться на осмотр</a>
-      <a href="#services" class="btn btn-glass mag">Посмотреть прайс-лист</a>
+      <a href="#services" class="btn btn-glass mag">Посмотреть услуги</a>
     </div>
   </div>
 </section>
@@ -633,17 +620,17 @@ footer nav { gap: 24px; }
 <!-- О СТУДИИ И СТАТИСТИКА -->
 <section id="about">
   <div class="wrap">
-    <h2 class="rv">Оборудование и материалы</h2>
-    <p class="sub rv">Полируем эксцентриковыми машинками Rupes без перегрева и прижогов лака. Для мойки и защиты используем составы Koch Chemie и Gyeon.</p>
+    <h2 class="rv">О студии</h2>
+    <p class="sub rv">Здесь будет краткое описание вашей студии, оборудования, используемых материалов и стандартов качества.</p>
     <div class="grid" id="stats"></div>
   </div>
 </section>
 
-<!-- УСЛУГИ И ЦЕНЫ С ТАБАМИ -->
+<!-- УСЛУГИ С ТАБАМИ -->
 <section id="services" style="background:var(--bg2)">
   <div class="wrap">
-    <h2 class="rv">Услуги и цены</h2>
-    <p class="sub rv">Фиксируем стоимость после первичного осмотра кузова. Цена не меняется в процессе выполнения работ.</p>
+    <h2 class="rv">Услуги</h2>
+    <p class="sub rv">Здесь будет описание направлений работы студии. Выберите нужную категорию для просмотра перечня услуг.</p>
     <div class="tabs-nav" id="tabs"></div>
     <div class="grid" id="svc"></div>
   </div>
@@ -669,14 +656,12 @@ footer nav { gap: 24px; }
   </div>
 </section>
 
-<!-- ПРЕИМУЩЕСТВА И ЭТАПЫ РАБОТЫ -->
+<!-- КАК МЫ РАБОТАЕМ (ПРЕИМУЩЕСТВА) -->
 <section id="why" style="background:var(--bg2)">
   <div class="wrap">
     <h2 class="rv">Как мы работаем</h2>
-    <div class="grid" id="adv" style="margin: 30px 0 80px"></div>
-
-    <h2 class="rv">Порядок выполнения заказа</h2>
-    <div class="grid" id="steps" style="margin-top: 30px; counter-reset: steps"></div>
+    <p class="sub rv">Здесь будет ваш текст с описанием принципов работы, гарантий и стандартов обслуживания.</p>
+    <div class="grid" id="adv" style="margin-top: 30px"></div>
   </div>
 </section>
 
@@ -687,7 +672,11 @@ footer nav { gap: 24px; }
     <div class="rv-viewport">
       <div class="rv-track" id="rv-track"></div>
     </div>
-    <div class="dots" id="rv-dots"></div>
+    <div style="display:flex;justify-content:center;align-items:center;gap:16px;margin-top:24px">
+      <button id="rv-prev" class="btn btn-glass sm" aria-label="Предыдущий отзыв" style="width:42px;height:42px;padding:0;border-radius:50%;font-size:16px">←</button>
+      <div class="dots" id="rv-dots" style="margin-top:0"></div>
+      <button id="rv-next" class="btn btn-glass sm" aria-label="Следующий отзыв" style="width:42px;height:42px;padding:0;border-radius:50%;font-size:16px">→</button>
+    </div>
   </div>
 </section>
 
@@ -695,7 +684,7 @@ footer nav { gap: 24px; }
 <section id="faq" style="background:var(--bg2)">
   <div class="wrap" style="max-width: 860px">
     <h2 class="rv">Частые вопросы</h2>
-    <p class="sub rv">Всё, что нужно знать перед тем, как привезти свой автомобиль к нам.</p>
+    <p class="sub rv">Ответы на популярные вопросы автовладельцев перед визитом в студию.</p>
     <div class="faq-list" id="faq-list"></div>
   </div>
 </section>
@@ -709,7 +698,7 @@ footer nav { gap: 24px; }
       <form id="fm">
         <input required placeholder="Ваше имя" id="f-name">
         <input required type="tel" placeholder="Телефон (+7 ...)" id="f-tel">
-        <input class="form-full" placeholder="Марка и модель автомобиля (например, BMW X5)" id="f-car">
+        <input class="form-full" placeholder="Марка и модель автомобиля" id="f-car">
         <select class="form-full" id="f-service"></select>
         <input type="date" id="f-date">
         <input type="time" id="f-time">
@@ -757,11 +746,13 @@ footer nav { gap: 24px; }
       <path d="M16 4C16 4 7 14 7 20a9 9 0 0 0 18 0C25 14 16 4 16 4Z"/>
       <circle cx="16" cy="20" r="3" fill="#18c8ff"/>
     </svg>
-    ДЕТЕЙЛИНГ СТУДИЯ 2.0
+    ДЕТЕЙЛИНГ СТУДИЯ
   </a>
   <nav>
+    <a href="#about">О студии</a>
     <a href="#services">Услуги</a>
     <a href="#gallery">До / После</a>
+    <a href="#why">Преимущества</a>
     <a href="#reviews">Отзывы</a>
     <a href="#contacts">Контакты</a>
   </nav>
@@ -775,67 +766,56 @@ footer nav { gap: 24px; }
 </div>
 
 <script>
-// ДАННЫЕ САЙТА
+// ДАННЫЕ САЙТА (ШАБЛОН)
 const C = {
   mq: [
-    'КЕРАМИКА 9H PRO',
-    'ВОССТАНОВИТЕЛЬНАЯ ПОЛИРОВКА',
-    'БРОНЕПЛЕНКА SUNTEK',
-    'ХИМЧИСТКА САЛОНА ТОРНАДОРОМ',
-    'ГАРАНТИЯ ДО 5 ЛЕТ',
-    'ОПЫТ БОЛЕЕ 10 ЛЕТ',
-    'ЗАКРЫТЫЙ БОКС С КЛИМАТ-КОНТРОЛЕМ'
+    'ПОЛИРОВКА КУЗОВА',
+    'КЕРАМИЧЕСКИЕ СОСТАВЫ',
+    'ЗАЩИТНАЯ БРОНЕПЛЕНКА',
+    'ХИМЧИСТКА САЛОНА',
+    'ГАРАНТИЯ НА РАБОТЫ',
+    'ПРОФЕССИОНАЛЬНОЕ ОБОРУДОВАНИЕ',
+    'ЗАКРЫТЫЙ БОКС'
   ],
   stats: [
-    [10, 'лет опыта в детейлинге'],
-    [3800, 'автомобилей в работе'],
-    [99, '% довольных клиентов'],
-    [5, 'лет гарантии на покрытия']
+    ['N+', 'лет опыта в детейлинге'],
+    ['N+', 'автомобилей в работе'],
+    ['100%', 'внимание к деталям'],
+    ['N', 'лет гарантии на покрытия']
   ],
   tabs: [
-    ['Полировка кузова', [
-      ['Мягкая восстановительная полировка', 'Устраняет паутинку, мелкие царапины и возвращает заводской блеск кузова.', 'от 16 000 ₽', 'ПОПУЛЯРНО'],
-      ['Глубокая абразивная полировка', 'Удаление 95% царапин, притертостей и следов некачественных моек.', 'от 24 000 ₽', 'ХИТ'],
-      ['Полировка фар и фонарей', 'Возвращение прозрачности оптике с последующим нанесением защиты.', 'от 4 000 ₽', 'БЫСТРО']
+    ['Категория 1', [
+      ['Название услуги 1', 'Здесь будет подробное описание услуги, применяемые технологии и материалы...', 'Услуга'],
+      ['Название услуги 2', 'Здесь будет подробное описание услуги, применяемые технологии и материалы...', 'Услуга'],
+      ['Название услуги 3', 'Здесь будет подробное описание услуги, применяемые технологии и материалы...', 'Услуга']
     ]],
-    ['Керамика и жидкое стекло', [
-      ['Керамическое покрытие 9H (2 слоя)', 'Гидрофобный эффект, защита от ультрафиолета, реагентов и пескоструя.', 'от 32 000 ₽', 'ТОП'],
-      ['Керамика (4 слоя + топ-коут)', 'Глубина цвета и зеркальный блеск кузова сроком до 3 лет.', 'от 58 000 ₽', 'КОМПЛЕКС'],
-      ['Антидождь на все стекла', 'Срыв капель воды и грязи на скорости от 50 км/ч.', 'от 6 000 ₽', 'КОМФОРТ']
+    ['Категория 2', [
+      ['Название услуги 4', 'Здесь будет подробное описание услуги, применяемые технологии и материалы...', 'Услуга'],
+      ['Название услуги 5', 'Здесь будет подробное описание услуги, применяемые технологии и материалы...', 'Услуга'],
+      ['Название услуги 6', 'Здесь будет подробное описание услуги, применяемые технологии и материалы...', 'Услуга']
     ]],
-    ['Защитная антигравийная пленка', [
-      ['Зоны риска (Капот, бампер, фары, зеркала)', 'Защита передней части кузова от сколов, гравия и царапин.', 'от 65 000 ₽', 'БАЗА'],
-      ['Полная оклейка кузова полиуретаном', 'Полиуретан толщиной 200 микрон с функцией самозатягивания от тепла.', 'от 190 000 ₽', 'МАКСИМУМ'],
-      ['Оклейка глянцевых элементов салона', 'Защита салонного глянца от царапин ключами и ногтями.', 'от 12 000 ₽', 'САЛОН']
-    ]],
-    ['Детейлинг химчистка салона', [
-      ['Комплексная химчистка с разбором', 'Глубокая очистка сидений, пола, потолка и багажника торнадором и паром.', 'от 18 000 ₽', 'КОМПЛЕКС'],
-      ['Защитная пропитка кожи и текстиля', 'Предотвращает окрашивание светлой кожи одеждой и впитывание жидкостей.', 'от 10 000 ₽', 'ЗАЩИТА'],
-      ['Озонация салона', 'Устранение бактерий и застарелых запахов в системе кондиционирования.', 'от 3 500 ₽', 'ОБРАБОТКА']
+    ['Категория 3', [
+      ['Название услуги 7', 'Здесь будет подробное описание услуги, применяемые технологии и материалы...', 'Услуга'],
+      ['Название услуги 8', 'Здесь будет подробное описание услуги, применяемые технологии и материалы...', 'Услуга'],
+      ['Название услуги 9', 'Здесь будет подробное описание услуги, применяемые технологии и материалы...', 'Услуга']
     ]]
   ],
   adv: [
-    ['Сертифицированные составы', 'Используем Koch Chemie, Gyeon, CarPro и оригинальные полиуретановые пленки.'],
-    ['Опытные мастера', 'Стаж мастеров от 6 лет. Подбираем связки кругов и паст с учетом толщины заводского лака.'],
-    ['Подготовленные боксы', 'Рассеянное освещение 5000K и обеспыливание для контроля полировки без голограмм.'],
-    ['Договор и гарантия', 'Фиксируем стоимость до начала работ и выдаем гарантийный талон на защитные покрытия.']
-  ],
-  steps: [
-    ['Замер ЛКП и диагностика', 'Проверяем толщину лака ультразвуковым толщиномером и подбираем связку паст.'],
-    ['Трехфазная деликатная мойка', 'Очищаем кузов от битума, смол и колодочной пыли синтетической глиной.'],
-    ['Полировка и защита', 'Убираем риски на лаке и наносим керамику или полиуретановую пленку в чистом боксе.'],
-    ['Сушка и контроль качества', 'Прогреваем керамику инфракрасными лампами для кристаллизации и сдаем работу.']
+    ['Преимущество 1', 'Здесь будет ваш текст с описанием оборудования, используемых материалов и технологий.'],
+    ['Преимущество 2', 'Здесь будет ваш текст с описанием квалификации мастеров и индивидуального подхода.'],
+    ['Преимущество 3', 'Здесь будет ваш текст с описанием условий в боксах, освещения и стандартов чистоты.'],
+    ['Преимущество 4', 'Здесь будет ваш текст с описанием гарантийных обязательств и условий договора.']
   ],
   reviews: [
-    ['Александр М.', 'BMW M5 F90', 'Делал восстановительную полировку и керамику. Лак освежили, убрали круговую паутину после прошлых моек. Вода с кузова быстро сдувается на скорости.'],
-    ['Дмитрий В.', 'Porsche Cayenne Coupe', 'Оклеили переднюю часть полиуретаном и нанесли защитный состав на сиденья. Края пленки завели под элементы аккуратно, стыков не видно.'],
-    ['Сергей К.', 'Audi RS6 Avant', 'Сделали химчистку салона с частичным разбором. Со светлой кожи сошли следы от джинсов, пластик чистый, без липкого блеска.']
+    ['Имя клиента', 'Марка авто / Услуга', 'Здесь будет реальный отзыв вашего клиента о качестве выполненных работ, аккуратности мастеров и впечатлениях от результата.'],
+    ['Имя клиента', 'Марка авто / Услуга', 'Здесь будет реальный отзыв вашего клиента о качестве выполненных работ, аккуратности мастеров и впечатлениях от результата.'],
+    ['Имя клиента', 'Марка авто / Услуга', 'Здесь будет реальный отзыв вашего клиента о качестве выполненных работ, аккуратности мастеров и впечатлениях от результата.']
   ],
   faq: [
-    ['Сколько времени занимает комплекс детейлинга?', 'Восстановительная полировка с нанесением керамики занимает от 1,5 до 2 дней. Оклейка кузова пленкой — от 3 до 5 дней в зависимости от сложности деталей.'],
-    ['Защищает ли керамика от сколов?', 'Керамика защищает от реагентов, выгорания лака и мелкой паутины от щеток. От гравия и сколов на трассе защищает антигравийная полиуретановая пленка.'],
-    ['Как ухаживать за машиной после керамики?', 'Первые 10 дней рекомендуем воздержаться от мойки, пока покрытие полимеризуется. Дальше достаточно регулярной двухфазной мойки без щелочной пены.'],
-    ['Предоставляется ли гарантия на работы?', 'Да. На керамические составы оформляем гарантию до 3 лет при условии ежегодного ухода, на полиуретановую пленку — гарантия от отслоения и пожелтения.']
+    ['Сколько времени занимает выполнение работы?', 'Здесь будет ваш ответ на вопрос с учетом регламента и условий студии.'],
+    ['Какие материалы и составы используются?', 'Здесь будет ваш ответ на вопрос с описанием брендов и линеек автохимии.'],
+    ['Предоставляется ли гарантия на выполненные работы?', 'Здесь будет ваш ответ на вопрос с указанием сроков и условий гарантии.'],
+    ['Как подготовить автомобиль перед визитом?', 'Здесь будет ваш ответ на вопрос с рекомендациями для автовладельцев.']
   ]
 };
 
@@ -847,10 +827,10 @@ const H = (e, h) => $(e).innerHTML = h;
 // 1. БЕГУЩАЯ СТРОКА
 H('#mq', (C.mq.map(t => t + '<span>✦</span>').join('')).repeat(5));
 
-// 2. СТАТИСТИКА С АНИМИРОВАННЫМИ СЧЕТЧИКАМИ
+// 2. СТАТИСТИКА
 H('#stats', C.stats.map(s => `
   <div class="card rv">
-    <div class="stat-num" data-val="${s[0]}">0</div>
+    <div class="stat-num" data-val="${s[0]}">${s[0]}</div>
     <div class="stat-desc">${s[1]}</div>
   </div>
 `).join(''));
@@ -860,19 +840,19 @@ function renderTab(idx) {
   H('#svc', C.tabs[idx][1].map(item => `
     <div class="card svc-card rv in">
       <div class="svc-head">
-        <span class="svc-badge">${item[3]}</span>
+        <span class="svc-badge">${item[2]}</span>
         <h3>${item[0]}</h3>
         <p>${item[1]}</p>
       </div>
       <div class="svc-bottom">
-        <span class="svc-price">${item[2]}</span>
-        <button class="btn btn-glass sm" onclick="pickService('${item[0]}')">Записаться</button>
+        <button class="btn btn-glass sm mag" onclick="pickService('${item[0]}')">Записаться</button>
       </div>
     </div>
   `).join(''));
 
   $$('.tab-btn').forEach((btn, i) => btn.classList.toggle('on', i === idx));
   initCard3D();
+  initMag();
 }
 
 H('#tabs', C.tabs.map((t, i) => `
@@ -880,7 +860,7 @@ H('#tabs', C.tabs.map((t, i) => `
 `).join(''));
 
 // Заполнение выпадающего списка в форме
-H('#f-service', C.tabs.flatMap(t => t[1]).map(s => `<option value="${s[0]}">${s[0]} (${s[2]})</option>`).join(''));
+H('#f-service', C.tabs.flatMap(t => t[1]).map(s => `<option value="${s[0]}">${s[0]}</option>`).join(''));
 
 // Быстрый клик «Записаться» из карточки услуги
 window.pickService = function(name) {
@@ -892,18 +872,11 @@ window.pickService = function(name) {
   setTimeout(() => card.classList.remove('flash'), 1200);
 };
 
-// 4. ПРЕИМУЩЕСТВА И ЭТАПЫ
+// 4. ПРЕИМУЩЕСТВА
 H('#adv', C.adv.map(a => `
   <div class="card rv">
     <h3 style="color:var(--a);margin-bottom:10px">${a[0]}</h3>
     <p style="color:var(--m);font-size:15px">${a[1]}</p>
-  </div>
-`).join(''));
-
-H('#steps', C.steps.map(s => `
-  <div class="card step-card rv">
-    <h3 style="margin-bottom:8px">${s[0]}</h3>
-    <p style="color:var(--m);font-size:15px">${s[1]}</p>
   </div>
 `).join(''));
 
@@ -915,7 +888,7 @@ H('#rv-track', C.reviews.map(r => `
       <p class="rv-text">«${r[2]}»</p>
       <div class="rv-author">
         <span class="rv-name">${r[0]}</span>
-        <span class="rv-car">Авто: ${r[1]}</span>
+        <span class="rv-car">${r[1]}</span>
       </div>
     </div>
   </div>
@@ -931,6 +904,9 @@ function showReview(idx) {
   clearInterval(reviewTimer);
   reviewTimer = setInterval(() => showReview((currentReview + 1) % C.reviews.length), 6000);
 }
+
+$('#rv-prev').onclick = () => showReview((currentReview - 1 + C.reviews.length) % C.reviews.length);
+$('#rv-next').onclick = () => showReview((currentReview + 1) % C.reviews.length);
 
 // 6. FAQ АККОРДЕОН
 H('#faq-list', C.faq.map(f => `
@@ -987,15 +963,19 @@ function initCard3D() {
 }
 
 // 10. МАГНИТНЫЕ КНОПКИ
-$$('.mag').forEach(btn => {
-  btn.onmousemove = e => {
-    const r = btn.getBoundingClientRect();
-    const mx = (e.clientX - r.left - r.width / 2) * 0.28;
-    const my = (e.clientY - r.top - r.height / 2) * 0.38;
-    btn.style.transform = `translate(${mx}px, ${my}px)`;
-  };
-  btn.onmouseleave = () => btn.style.transform = '';
-});
+function initMag() {
+  $$('.mag').forEach(btn => {
+    if (btn._mag) return;
+    btn._mag = true;
+    btn.onmousemove = e => {
+      const r = btn.getBoundingClientRect();
+      const mx = (e.clientX - r.left - r.width / 2) * 0.28;
+      const my = (e.clientY - r.top - r.height / 2) * 0.38;
+      btn.style.transform = `translate(${mx}px, ${my}px)`;
+    };
+    btn.onmouseleave = () => btn.style.transform = '';
+  });
+}
 
 // 11. SCROLL REVEAL И СЧЕТЧИКИ
 const io = new IntersectionObserver(entries => {
@@ -1005,16 +985,18 @@ const io = new IntersectionObserver(entries => {
       const numElem = entry.target.querySelector('[data-val]');
       if (numElem && !numElem._counted) {
         numElem._counted = true;
-        const target = +numElem.dataset.val;
-        const start = performance.now();
-        const duration = 1600;
-        function update(now) {
-          const progress = Math.min((now - start) / duration, 1);
-          const ease = 1 - Math.pow(1 - progress, 3);
-          numElem.textContent = Math.round(target * ease).toLocaleString('ru-RU');
-          if (progress < 1) requestAnimationFrame(update);
+        const target = parseInt(numElem.dataset.val, 10);
+        if (!isNaN(target)) {
+          const start = performance.now();
+          const duration = 1600;
+          function update(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const ease = 1 - Math.pow(1 - progress, 3);
+            numElem.textContent = Math.round(target * ease).toLocaleString('ru-RU');
+            if (progress < 1) requestAnimationFrame(update);
+          }
+          requestAnimationFrame(update);
         }
-        requestAnimationFrame(update);
       }
       io.unobserve(entry.target);
     }
@@ -1041,6 +1023,7 @@ $('#nv').onclick = () => $('#nv').classList.remove('open');
 renderTab(0);
 showReview(0);
 initCard3D();
+initMag();
 window.addEventListener('load', () => setTimeout(() => $('#ld').classList.add('hide'), 800));
 </script>
 </body>
