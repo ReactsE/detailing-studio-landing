@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Шаблон сайта детейлинг-студии 3 — Motorsport Amber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #090a0d;
+  --bg-sub: #101117;
+  --card: #14161f;
+  --card-hover: #1c1f2b;
+  --line: rgba(255, 107, 0, 0.16);
+  --line-strong: rgba(255, 107, 0, 0.4);
+  --amber: #ff6b00;
+  --amber-light: #ff8533;
+  --amber-glow: rgba(255, 107, 0, 0.28);
+  --text: #ffffff;
+  --text-dim: #8b8e9e;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ТИПОГРАФИКА */
+h1, h2, h3, .logo { font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+h2 { font-size: clamp(28px, 4.2vw, 48px); margin-bottom: 14px; }
+p.sub { color: var(--text-dim); max-width: 620px; font-size: 16px; margin-bottom: 40px; }
+.grad-amber {
+  background: linear-gradient(135deg, #ffffff 30%, #ff8533 75%, #ff6b00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.wrap { max-width: 1220px; margin: 0 auto; position: relative; z-index: 2; }
+section { padding: 110px 6vw; position: relative; }
+
+/* ХЕДЕР */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 6vw;
+  background: rgba(9, 10, 13, 0.86);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 17px;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.logo-tag {
+  background: var(--amber);
+  color: #000;
+  font-weight: 800;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+nav { display: flex; gap: 32px; align-items: center; font-size: 14px; font-weight: 700; color: var(--text-dim); }
+nav a { text-decoration: none; color: inherit; transition: color .25s; }
+nav a:hover { color: var(--amber); }
+
+/* КНОПКИ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 32px;
+  border-radius: 4px;
+  border: 1px solid var(--amber);
+  color: #000000;
+  background: var(--amber);
+  font: 800 14px 'Manrope', sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 25px var(--amber-glow);
+  transition: transform .25s, box-shadow .25s, background .25s;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  background: var(--amber-light);
+  box-shadow: 0 8px 35px rgba(255, 107, 0, 0.5);
+}
+.btn-amber-outline {
+  background: rgba(255, 107, 0, 0.05);
+  color: #ffffff;
+  border: 1px solid var(--line-strong);
+  box-shadow: none;
+}
+.btn-amber-outline:hover {
+  background: rgba(255, 107, 0, 0.15);
+  border-color: var(--amber);
+}
+.btn.sm { padding: 9px 20px; font-size: 12px; }
+
+/* HERO */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 130px;
+  padding-bottom: 90px;
+  position: relative;
+  background: radial-gradient(ellipse 70% 50% at 75% 45%, rgba(255, 107, 0, 0.12), transparent 70%);
+}
+.hero-split {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 40px;
+  align-items: center;
+}
+.badge-amber {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 16px;
+  background: rgba(255, 107, 0, 0.1);
+  border: 1px solid var(--amber);
+  border-radius: 30px;
+  color: var(--amber);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.badge-amber-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 10px var(--amber);
+}
+#hero h1 {
+  font-size: clamp(38px, 5.2vw, 68px);
+  margin-bottom: 24px;
+  line-height: 1.08;
+}
+#hero p {
+  color: var(--text-dim);
+  font-size: 18px;
+  margin-bottom: 36px;
+  max-width: 540px;
+  line-height: 1.65;
+}
+.hero-btns { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 36px; }
+.hero-tags {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  color: var(--text-dim);
+  font-size: 13px;
+  font-weight: 700;
+}
+.hero-tag-item { display: flex; align-items: center; gap: 8px; }
+.hero-tag-item:before { content: ""; width: 5px; height: 5px; background: var(--amber); border-radius: 50%; }
+
+/* HERO СТЕЙДЖ */
+.hero-stage {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: #101117;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 107, 0, 0.15);
+}
+.hero-stage img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+}
+.hero-stage-chip {
+  position: absolute;
+  background: rgba(9, 10, 13, 0.9);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--amber);
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+.chip-top { top: 20px; right: 20px; }
+.chip-bot { bottom: 20px; left: 20px; }
+.chip-val { font-family: 'Syne', sans-serif; color: var(--amber); font-size: 16px; margin-right: 6px; }
+
+/* ТИКЕР */
+.ticker-bar {
+  overflow: hidden;
+  border-block: 1px solid var(--line);
+  background: #101117;
+  padding: 16px 0;
+  white-space: nowrap;
+}
+.ticker-track {
+  display: inline-block;
+  animation: tick 32s linear infinite;
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+.ticker-track span { color: var(--amber); margin: 0 26px; }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* СЕТКА И КАРТОЧКИ */
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 30px;
+  border-radius: 8px;
+  transition: all .3s;
+}
+.stat-card:hover {
+  border-color: var(--amber);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+.stat-digit {
+  font-family: 'Syne', sans-serif;
+  font-size: 44px;
+  font-weight: 800;
+  color: var(--amber);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-text { color: var(--text-dim); font-size: 14px; font-weight: 600; }
+
+/* КАРТОЧКИ УСЛУГ */
+.sport-box {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all .35s;
+}
+.sport-box:hover {
+  border-color: var(--amber);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.7), 0 0 20px var(--amber-glow);
+}
+.sport-thumb {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+.sport-thumb img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .5s;
+}
+.sport-box:hover .sport-thumb img { transform: scale(1.06); }
+.sport-thumb-tag {
+  position: absolute;
+  top: 14px; left: 14px;
+  background: var(--amber);
+  color: #000;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.sport-content { padding: 26px; }
+.sport-content h3 { font-size: 20px; margin-bottom: 10px; color: #ffffff; }
+.sport-content p { color: var(--text-dim); font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
+
+/* ДО / ПОСЛЕ */
+.ba-box {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--amber);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+  --pos: 50%;
+}
+.ba-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+.ba-after {
+  background-image: url('https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1600&q=85');
+}
+.ba-before {
+  background-image: url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1600&q=85');
+  clip-path: polygon(0 0, var(--pos) 0, var(--pos) 100%, 0 100%);
+  filter: contrast(0.85) brightness(0.85);
+}
+.ba-badge {
+  position: absolute;
+  bottom: 20px;
+  background: rgba(9, 10, 13, 0.9);
+  border: 1px solid var(--amber);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.ba-after .ba-badge { right: 20px; }
+.ba-before .ba-badge { left: 20px; }
+.ba-line {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: var(--pos);
+  width: 2px;
+  background: var(--amber);
+  box-shadow: 0 0 20px var(--amber);
+  pointer-events: none;
+}
+.ba-knob {
+  position: absolute;
+  top: 50%; left: -19px;
+  width: 38px; height: 38px;
+  margin-top: -19px;
+  border-radius: 50%;
+  background: #090a0d;
+  border: 2px solid var(--amber);
+  box-shadow: 0 0 25px var(--amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--amber);
+}
+.ba-range-input {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+}
+
+/* ФОРМА ЗАПИСИ */
+.form-box {
+  background: var(--card);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  padding: 44px 40px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 24px; }
+.f-full { grid-column: span 2; }
+input, select {
+  width: 100%;
+  background: #090a0d;
+  border: 1px solid var(--line);
+  color: #ffffff;
+  padding: 14px 18px;
+  border-radius: 4px;
+  font: 600 15px 'Manrope', sans-serif;
+  transition: border-color .25s;
+}
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--amber);
+}
+
+/* МОБИЛЬНЫЙ БАР */
+.mobile-bar {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(9, 10, 13, 0.96);
+  border-top: 1px solid var(--line);
+  padding: 12px 18px;
+  z-index: 90;
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .hero-split { grid-template-columns: 1fr; }
+  .hero-stage { order: -1; }
+  .hero-stage img { height: 320px; }
+  nav { display: none; }
+  .form-grid { grid-template-columns: 1fr; }
+  .f-full { grid-column: span 1; }
+  .mobile-bar { display: flex; }
+  body { padding-bottom: 70px; }
+}
+</style>
+</head>
+<body>
+
+
+<div id="proto-switcher" style="position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;align-items:center;gap:8px;background:rgba(10,12,16,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:6px 12px;border-radius:40px;border:1px solid rgba(255,255,255,0.12);box-shadow:0 10px 30px rgba(0,0,0,0.5);font-family:'Manrope',sans-serif;font-size:12px;">
+  <span style="color:#8892b0;font-weight:600;padding-right:4px;">Стиль:</span>
+  <a href="детейлинг 1.html" style="padding:6px 14px;border-radius:20px;text-decoration:none;font-weight:700;transition:all .25s;color:#94a3b8;background:transparent;">1. Платина</a>
+  <a href="детейлинг 2.html" style="padding:6px 14px;border-radius:20px;text-decoration:none;font-weight:700;transition:all .25s;color:#94a3b8;background:transparent;">2. Золото</a>
+  <a href="детейлинг 3.html" style="padding:6px 14px;border-radius:20px;text-decoration:none;font-weight:700;transition:all .25s;background:#ff6b00;color:#0a0a0c;">3. Янтарь</a>
+</div>
+
+
+<!-- ХЕДЕР -->
+<header>
+  <a href="#top" class="logo">
+    <span class="logo-tag">SPORT</span>
+    Детейлинг студия
+  </a>
+  <nav>
+    <a href="#services">Услуги</a>
+    <a href="#stats">Показатели</a>
+    <a href="#gallery">До и после</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+  <a href="#book" class="btn sm">Защитить авто</a>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-split">
+      <div>
+        <div class="badge-amber">
+          <span class="badge-amber-dot"></span> High Performance Protection · Москва
+        </div>
+        <h1>Здесь будет название <span class="grad-amber">вашей детейлинг-студии</span></h1>
+        <p>Максимальная защита зон риска от гравия, пескоструя и мелких сколов на скорости до 300 км/ч. Усиленный полиуретан 215 мкм с функцией теплового самозаживления.</p>
+        <div class="hero-btns">
+          <a href="#book" class="btn">Записаться на защиту</a>
+          <a href="#services" class="btn btn-amber-outline">Зоны оклейки</a>
+        </div>
+        <div class="hero-tags">
+          <span class="hero-tag-item">Полиуретан 215 мкм</span>
+          <span class="hero-tag-item">Защита радиаторов сетками</span>
+          <span class="hero-tag-item">Термокерамика на диски и суппорты</span>
+        </div>
+      </div>
+      <div>
+        <div class="hero-stage">
+          <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1200&q=85" alt="Спорткар в детейлинге">
+          <div class="hero-stage-chip chip-top">
+            <span class="chip-val">215 мкм</span> Броня зоны риска
+          </div>
+          <div class="hero-stage-chip chip-bot">
+            <span class="chip-val">300 км/ч</span> Устойчивость к гравию
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ТИКЕР -->
+<div class="ticker-bar">
+  <div class="ticker-track">
+    ЗАЩИТА ОТ ГРАВИЯ <span>✦</span> ПОЛИУРЕТАН 215 МКМ <span>✦</span> ВОССТАНОВИТЕЛЬНАЯ ПОЛИРОВКА <span>✦</span> ТЕРМОКЕРАМИКА НА ДИСКИ <span>✦</span> БРОНИРОВАНИЕ ОПТИКИ <span>✦</span> ГАРАНТИЯ 5 ЛЕТ <span>✦</span>
+    ЗАЩИТА ОТ ГРАВИЯ <span>✦</span> ПОЛИУРЕТАН 215 МКМ <span>✦</span> ВОССТАНОВИТЕЛЬНАЯ ПОЛИРОВКА <span>✦</span> ТЕРМОКЕРАМИКА НА ДИСКИ <span>✦</span> БРОНИРОВАНИЕ ОПТИКИ <span>✦</span> ГАРАНТИЯ 5 ЛЕТ <span>✦</span>
+  </div>
+</div>
+
+<!-- ЦИФРЫ И СТАНДАРТЫ -->
+<section id="stats" style="background:var(--bg-sub);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="grid-4">
+      <div class="stat-card">
+        <div class="stat-digit">215 мкм</div>
+        <div class="stat-text">Толщина ударного полиуретанового барьера</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-digit">0%</div>
+        <div class="stat-text">Риск среза заводского лака благодаря плоттерным лекалам</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-digit">800°C</div>
+        <div class="stat-text">Термостойкость керамического покрытия тормозных суппортов</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-digit">5 лет</div>
+        <div class="stat-text">Официальная гарантия от пожелтения и отслоения пленки</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- УСЛУГИ -->
+<section id="services">
+  <div class="wrap">
+    <h2>Спортивные программы защиты</h2>
+    <p class="sub">Готовые комплексы для скоростных трасс, трек-дней и городской эксплуатации.</p>
+    <div class="grid-3">
+
+      <div class="sport-box">
+        <div class="sport-thumb">
+          <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80" alt="Зоны риска">
+          <span class="sport-thumb-tag">Хит защиты</span>
+        </div>
+        <div class="sport-content">
+          <h3>Оклейка ударных зон риска</h3>
+          <p>Передний бампер, капот целиком, передние крылья, стойки лобового стекла, зеркала и зоны под ручками. Защита от прямого удара щебня на трассе.</p>
+          <a href="#book" class="btn btn-amber-outline sm" style="width:100%">Выбрать комплекс</a>
+        </div>
+      </div>
+
+      <div class="sport-box">
+        <div class="sport-thumb">
+          <img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=800&q=80" alt="Полировка">
+          <span class="sport-thumb-tag">Коррекция</span>
+        </div>
+        <div class="sport-content">
+          <h3>Антиголограммная полировка</h3>
+          <p>Удаление круговой паутины и помутнений с сохранением максимальной толщины заводского лака перед бронированием или нанесением керамики.</p>
+          <a href="#book" class="btn btn-amber-outline sm" style="width:100%">Выбрать комплекс</a>
+        </div>
+      </div>
+
+      <div class="sport-box">
+        <div class="sport-thumb">
+          <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=800&q=80" alt="Керамика дисков">
+          <span class="sport-thumb-tag">Термозащита</span>
+        </div>
+        <div class="sport-content">
+          <h3>Керамика на колесные диски</h3>
+          <p>Жаропрочный гидрофобный состав защищает кованые диски и суппорты от въедающейся горячей тормозной пыли и дорожной химии.</p>
+          <a href="#book" class="btn btn-amber-outline sm" style="width:100%">Выбрать комплекс</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ДО / ПОСЛЕ -->
+<section id="gallery" style="background:var(--bg-sub);border-top:1px solid var(--line);">
+  <div class="wrap">
+    <h2>Сравнение до и после полировки</h2>
+    <p class="sub">Потяните разделитель в стороны для оценки устранения микродефектов и глубины цвета.</p>
+    
+    <div class="ba-box" id="ba">
+      <div class="ba-layer ba-after">
+        <span class="ba-badge">После: Идеальный глянец без голограмм</span>
+      </div>
+      <div class="ba-layer ba-before">
+        <span class="ba-badge">До: Пескоструй и мелкие риски</span>
+      </div>
+      <div class="ba-line">
+        <div class="ba-knob">◀ ▶</div>
+      </div>
+      <input type="range" min="0" max="100" value="50" class="ba-range-input" id="ba-range" aria-label="Сравнить До и После">
+    </div>
+  </div>
+</section>
+
+<!-- ФОРМА БРОНИРОВАНИЯ -->
+<section id="book">
+  <div class="wrap">
+    <div class="form-box">
+      <h2>Расчет стоимости защиты автомобиля</h2>
+      <p style="color:var(--text-dim);margin-top:8px">Укажите модель автомобиля, и мы подберем оптимальный комплект оклейки и составов.</p>
+      
+      <form id="order-form" onsubmit="event.preventDefault(); document.getElementById('form-ok').style.display='block';">
+        <div class="form-grid">
+          <input required placeholder="Ваше имя">
+          <input required type="tel" placeholder="Номер телефона (+7 ...)">
+          <input class="f-full" placeholder="Марка и модель авто">
+          <select class="f-full">
+            <option>Оклейка зон риска (бампер, капот, крылья, фары)</option>
+            <option>Полная оклейка кузова бронепленкой 215 мкм</option>
+            <option>Восстановительная полировка кузова</option>
+            <option>Керамика на кузов и термокерамика на диски</option>
+          </select>
+          <div class="f-full" style="display:flex;align-items:center;gap:18px;margin-top:10px">
+            <button class="btn" type="submit">Рассчитать защиту</button>
+            <span id="form-ok" style="display:none;color:var(--amber-light);font-size:14px;font-weight:600">Заявка принята. Специалист свяжется с вами.</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<section id="contacts" style="background:var(--bg-sub);border-top:1px solid var(--line);">
+  <div class="wrap">
+    <h2>Контакты спортивной студии</h2>
+    <div class="grid-3" style="margin-top:30px">
+      <div class="stat-card">
+        <h3>Локация</h3>
+        <p style="color:var(--text-dim);margin-top:6px">г. Москва, шоссе Энтузиастов</p>
+        <p style="color:#ffffff;font-size:13px;margin-top:4px">Оборудованный заезд для авто с низким клиренсом</p>
+      </div>
+      <div class="stat-card">
+        <h3>Телефон студии</h3>
+        <a href="tel:+70000000000" style="color:#ffffff;font-size:18px;font-weight:700;text-decoration:none">+7 (000) 000-00-00</a>
+        <p style="color:var(--text-dim);font-size:13px;margin-top:6px">Работаем ежедневно с 09:00 до 21:00</p>
+      </div>
+      <div class="stat-card">
+        <h3>WhatsApp для консультаций</h3>
+        <p style="color:var(--text-dim);font-size:14px;margin-bottom:14px">Быстрый ответ и расчет по фото автомобиля</p>
+        <a href="https://wa.me/70000000000" target="_blank" class="btn btn-amber-outline sm">Написать в WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mobile-bar">
+  <a href="tel:+70000000000" class="btn btn-amber-outline sm" style="flex:1">Позвонить</a>
+  <a href="#book" class="btn sm" style="flex:1.4">Записаться</a>
+</div>
+
+<script>
+const ba = document.getElementById('ba');
+const rg = document.getElementById('ba-range');
+if (rg && ba) {
+  rg.addEventListener('input', e => {
+    ba.style.setProperty('--pos', e.target.value + '%');
+  });
+}
+</script>
+</body>
+</html>
