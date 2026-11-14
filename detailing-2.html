@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Шаблон сайта детейлинг-студии 2 — Royal Gold</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #070709;
+  --bg-sub: #0d0c11;
+  --card: #121118;
+  --card-hover: #191722;
+  --line: rgba(212, 175, 55, 0.16);
+  --line-strong: rgba(212, 175, 55, 0.4);
+  --gold: #d4af37;
+  --gold-light: #f5deb3;
+  --gold-glow: rgba(212, 175, 55, 0.2);
+  --text: #fdfbf7;
+  --text-dim: #9c9589;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ТИПОГРАФИКА */
+h1, h2, h3, .logo { font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 0.04em; line-height: 1.2; text-transform: uppercase; }
+h2 { font-size: clamp(26px, 3.8vw, 42px); margin-bottom: 14px; color: var(--gold-light); }
+p.sub { color: var(--text-dim); max-width: 600px; font-size: 16px; margin-bottom: 40px; }
+.grad-gold {
+  background: linear-gradient(135deg, #ffffff 10%, #f5deb3 45%, #d4af37 80%, #aa8425 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.wrap { max-width: 1220px; margin: 0 auto; position: relative; z-index: 2; }
+section { padding: 110px 6vw; position: relative; }
+
+/* ХЕДЕР */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 6vw;
+  background: rgba(7, 7, 9, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  color: var(--gold-light);
+  text-decoration: none;
+  letter-spacing: 0.12em;
+}
+.logo-gem {
+  width: 9px; height: 9px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  box-shadow: 0 0 14px var(--gold);
+}
+nav { display: flex; gap: 32px; align-items: center; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
+nav a { text-decoration: none; color: inherit; transition: color .25s; }
+nav a:hover { color: var(--gold); }
+
+/* КНОПКИ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 32px;
+  border-radius: 4px;
+  border: 1px solid var(--gold);
+  color: #070709;
+  background: linear-gradient(135deg, #f5deb3 0%, #d4af37 100%);
+  font: 700 13px 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 25px rgba(212, 175, 55, 0.25);
+  transition: transform .25s, box-shadow .25s;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 35px rgba(212, 175, 55, 0.45);
+}
+.btn-gold-outline {
+  background: rgba(212, 175, 55, 0.04);
+  color: var(--gold-light);
+  border: 1px solid var(--line-strong);
+  box-shadow: none;
+}
+.btn-gold-outline:hover {
+  background: rgba(212, 175, 55, 0.12);
+  border-color: var(--gold);
+}
+.btn.sm { padding: 9px 20px; font-size: 12px; }
+
+/* HERO ЦЕНТРИРОВАННЫЙ КИНЕМАТОГРАФИЧНЫЙ */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 140px;
+  padding-bottom: 90px;
+  position: relative;
+  background: 
+    linear-gradient(180deg, rgba(7, 7, 9, 0.6) 0%, rgba(7, 7, 9, 0.95) 85%, #070709 100%),
+    radial-gradient(ellipse at 50% 30%, rgba(212, 175, 55, 0.12), transparent 70%),
+    url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1920&q=85') center 20% / cover no-repeat;
+}
+.badge-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 18px;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid var(--line-strong);
+  border-radius: 30px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+#hero h1 {
+  font-size: clamp(34px, 4.8vw, 64px);
+  max-width: 980px;
+  margin: 0 auto 24px;
+}
+#hero p {
+  color: var(--text-dim);
+  font-size: 18px;
+  margin: 0 auto 36px;
+  max-width: 640px;
+  line-height: 1.7;
+}
+.hero-btns { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+
+/* ПРЕИМУЩЕСТВА С НОМЕРАМИ 01, 02, 03 */
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+.gold-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 36px 30px;
+  border-radius: 4px;
+  transition: all .3s;
+  position: relative;
+}
+.gold-card:hover {
+  background: var(--card-hover);
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+.gold-num {
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--gold);
+  margin-bottom: 14px;
+  display: block;
+}
+.gold-card h3 { font-size: 18px; margin-bottom: 10px; color: var(--gold-light); }
+.gold-card p { color: var(--text-dim); font-size: 14px; line-height: 1.6; }
+
+/* КАТАЛОГ С ШАМПАНЬ АКЦЕНТАМИ */
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+.atelier-box {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all .35s;
+}
+.atelier-box:hover {
+  border-color: var(--gold);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.7);
+  transform: translateY(-4px);
+}
+.atelier-img {
+  height: 220px;
+  overflow: hidden;
+}
+.atelier-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .6s;
+}
+.atelier-box:hover .atelier-img img { transform: scale(1.05); }
+.atelier-content { padding: 30px; }
+.atelier-content h3 { font-size: 19px; margin-bottom: 10px; color: var(--gold-light); }
+.atelier-content p { color: var(--text-dim); font-size: 14px; margin-bottom: 22px; line-height: 1.6; }
+
+/* ДО / ПОСЛЕ В ЗОЛОТОМ КАНТЕ */
+.ba-box {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--gold);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+  --pos: 50%;
+}}
+.ba-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+.ba-after {
+  background-image: url('https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=1600&q=85');
+}
+.ba-before {
+  background-image: url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1600&q=85');
+  clip-path: polygon(0 0, var(--pos) 0, var(--pos) 100%, 0 100%);
+  filter: contrast(0.85) brightness(0.85);
+}
+.ba-badge {
+  position: absolute;
+  bottom: 20px;
+  background: rgba(7, 7, 9, 0.9);
+  border: 1px solid var(--gold);
+  padding: 8px 18px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+.ba-after .ba-badge { right: 20px; }
+.ba-before .ba-badge { left: 20px; }
+.ba-line {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: var(--pos);
+  width: 2px;
+  background: var(--gold);
+  box-shadow: 0 0 20px var(--gold);
+  pointer-events: none;
+}
+.ba-knob {
+  position: absolute;
+  top: 50%; left: -20px;
+  width: 40px; height: 40px;
+  margin-top: -20px;
+  border-radius: 50%;
+  background: #070709;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 25px var(--gold-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--gold);
+}
+.ba-range-input {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+}
+
+/* ФОРМА ЗАПИСИ */
+.form-box {
+  background: var(--card);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  padding: 48px 40px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 24px; }
+.f-full { grid-column: span 2; }
+input, select {
+  width: 100%;
+  background: #070709;
+  border: 1px solid var(--line);
+  color: #ffffff;
+  padding: 14px 18px;
+  border-radius: 4px;
+  font: 500 15px 'Plus Jakarta Sans', sans-serif;
+  transition: border-color .25s;
+}
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+/* МОБИЛЬНЫЙ БАР */
+.mobile-bar {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(7, 7, 9, 0.96);
+  border-top: 1px solid var(--line);
+  padding: 12px 18px;
+  z-index: 90;
+  gap: 12px;
+}
+
+@media (max-width: 860px) {
+  nav { display: none; }
+  .form-grid { grid-template-columns: 1fr; }
+  .f-full { grid-column: span 1; }
+  .mobile-bar { display: flex; }
+  body { padding-bottom: 70px; }
+}
+</style>
+</head>
+<body>
+
+
+<div id="proto-switcher" style="position:fixed;bottom:26px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;align-items:center;gap:8px;background:rgba(10,12,16,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:6px 12px;border-radius:40px;border:1px solid rgba(255,255,255,0.12);box-shadow:0 10px 30px rgba(0,0,0,0.5);font-family:'Manrope',sans-serif;font-size:12px;">
+  <span style="color:#8892b0;font-weight:600;padding-right:4px;">Стиль:</span>
+  <a href="детейлинг 1.html" style="padding:6px 14px;border-radius:20px;text-decoration:none;font-weight:700;transition:all .25s;color:#94a3b8;background:transparent;">1. Платина</a>
+  <a href="детейлинг 2.html" style="padding:6px 14px;border-radius:20px;text-decoration:none;font-weight:700;transition:all .25s;background:#d4af37;color:#0a0907;">2. Золото</a>
+  <a href="детейлинг 3.html" style="padding:6px 14px;border-radius:20px;text-decoration:none;font-weight:700;transition:all .25s;color:#94a3b8;background:transparent;">3. Янтарь</a>
+</div>
+
+
+<!-- ХЕДЕР -->
+<header>
+  <a href="#top" class="logo">
+    <span class="logo-gem"></span>
+    Детейлинг ателье
+  </a>
+  <nav>
+    <a href="#services">Услуги</a>
+    <a href="#advantages">Стандарты</a>
+    <a href="#gallery">Результаты</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+  <a href="#book" class="btn sm">Забронировать</a>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="badge-gold">Atelier Detailing Service · Представительский класс</div>
+    <h1>Здесь будет название <span class="grad-gold">вашей детейлинг-студии</span></h1>
+    <p>Индивидуальные программы сохранения и восстановления безупречного состояния автомобилей представительского класса. Премиальные материалы, изолированный бокс и персональный подход.</p>
+    <div class="hero-btns">
+      <a href="#book" class="btn">Забронировать визит</a>
+      <a href="#services" class="btn btn-gold-outline">Программы обслуживания</a>
+    </div>
+  </div>
+</section>
+
+<!-- ПРЕИМУЩЕСТВА С НОМЕРАМИ -->
+<section id="advantages" style="background:var(--bg-sub);border-block:1px solid var(--line);">
+  <div class="wrap">
+    <div class="grid-4">
+      <div class="gold-card">
+        <span class="gold-num">01</span>
+        <h3>Изолированный бокс</h3>
+        <p>Индивидуальное рабочее пространство с системой очистки воздуха от пыли перед нанесением покрытий.</p>
+      </div>
+      <div class="gold-card">
+        <span class="gold-num">02</span>
+        <h3>Контроль толщины ЛКП</h3>
+        <p>Каждое действие замеряется электронным микрометром для сохранения заводского слоя лака.</p>
+      </div>
+      <div class="gold-card">
+        <span class="gold-num">03</span>
+        <h3>Премиум-материалы</h3>
+        <p>Используем только оригинальные составы и самозатягивающиеся пленки от ведущих брендов.</p>
+      </div>
+      <div class="gold-card">
+        <span class="gold-num">04</span>
+        <h3>Фиксация в договоре</h3>
+        <p>Полная материальная ответственность и официальная гарантия на все выполненные работы.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ПРОГРАММЫ УСЛУГ -->
+<section id="services">
+  <div class="wrap">
+    <h2>Программы детейлинга</h2>
+    <p class="sub">Комплексный уход за экстерьером и интерьером для поддержания заводского состояния автомобиля.</p>
+    <div class="grid-3">
+
+      <div class="atelier-box">
+        <div class="atelier-img">
+          <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80" alt="Полировка">
+        </div>
+        <div class="atelier-content">
+          <h3>Деликатная полировка кузова</h3>
+          <p>Многоступенчатая коррекция лака с устранением паутины и микроцарапин без уменьшения ресурса заводского покрытия.</p>
+          <a href="#book" class="btn btn-gold-outline sm" style="width:100%">Подробнее</a>
+        </div>
+      </div>
+
+      <div class="atelier-box">
+        <div class="atelier-img">
+          <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=800&q=80" alt="Керамика">
+        </div>
+        <div class="atelier-content">
+          <h3>Кварцевая керамическая защита</h3>
+          <p>Нанесение премиальных керамических слоев для глубокого карамельного блеска и долговременной защиты от химических реагентов.</p>
+          <a href="#book" class="btn btn-gold-outline sm" style="width:100%">Подробнее</a>
+        </div>
+      </div>
+
+      <div class="atelier-box">
+        <div class="atelier-img">
+          <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80" alt="Интерьер">
+        </div>
+        <div class="atelier-content">
+          <h3>Реставрация и уход за кожей</h3>
+          <p>Очистка деликатными составами, консервация натуральной кожи и нанесение керамических барьеров от истирания.</p>
+          <a href="#book" class="btn btn-gold-outline sm" style="width:100%">Подробнее</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ДО / ПОСЛЕ -->
+<section id="gallery" style="background:var(--bg-sub);border-top:1px solid var(--line);">
+  <div class="wrap">
+    <h2>Результаты работы ателье</h2>
+    <p class="sub">Сравните отражающую способность кузова до полировки и после нанесения керамического слоя.</p>
+    
+    <div class="ba-box" id="ba">
+      <div class="ba-layer ba-after">
+        <span class="ba-badge">После: Глубокий зеркальный блеск</span>
+      </div>
+      <div class="ba-layer ba-before">
+        <span class="ba-badge">До: Помутнение и паутина</span>
+      </div>
+      <div class="ba-line">
+        <div class="ba-knob">◀ ▶</div>
+      </div>
+      <input type="range" min="0" max="100" value="50" class="ba-range-input" id="ba-range" aria-label="Сравнить До и После">
+    </div>
+  </div>
+</section>
+
+<!-- ФОРМА БРОНИРОВАНИЯ -->
+<section id="book">
+  <div class="wrap">
+    <div class="form-box">
+      <h2>Персональная консультация</h2>
+      <p style="color:var(--text-dim);margin-top:8px">Оставьте контактные данные для согласования программы обслуживания вашего автомобиля.</p>
+      
+      <form id="order-form" onsubmit="event.preventDefault(); document.getElementById('form-ok').style.display='block';">
+        <div class="form-grid">
+          <input required placeholder="Ваше имя">
+          <input required type="tel" placeholder="Номер телефона (+7 ...)">
+          <input class="f-full" placeholder="Марка и модель авто">
+          <select class="f-full">
+            <option>Антигравийный комплекс (кузов целиком)</option>
+            <option>Премиальная полировка и керамика 9H</option>
+            <option>Комплексный уход за кожей и интерьером</option>
+          </select>
+          <div class="f-full" style="display:flex;align-items:center;gap:18px;margin-top:10px">
+            <button class="btn" type="submit">Забронировать время</button>
+            <span id="form-ok" style="display:none;color:var(--gold-light);font-size:14px;font-weight:600">Заявка принята. Администратор свяжется с вами.</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<section id="contacts" style="background:var(--bg-sub);border-top:1px solid var(--line);">
+  <div class="wrap">
+    <h2>Контакты ателье</h2>
+    <div class="grid-3" style="margin-top:30px">
+      <div class="gold-card">
+        <h3>Локация</h3>
+        <p>г. Москва, Кутузовский проспект</p>
+        <p style="color:var(--text-dim);font-size:13px;margin-top:6px">Закрытая охраняемая территория</p>
+      </div>
+      <div class="gold-card">
+        <h3>Телефонная линия</h3>
+        <a href="tel:+70000000000" style="color:var(--gold-light);font-size:18px;font-weight:700;text-decoration:none">+7 (000) 000-00-00</a>
+        <p style="color:var(--text-dim);font-size:13px;margin-top:6px">Ежедневно с 09:00 до 21:00</p>
+      </div>
+      <div class="gold-card">
+        <h3>Мессенджер WhatsApp</h3>
+        <p style="margin-bottom:14px">Мгновенная консультация с мастером</p>
+        <a href="https://wa.me/70000000000" target="_blank" class="btn btn-gold-outline sm">Написать в WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mobile-bar">
+  <a href="tel:+70000000000" class="btn btn-gold-outline sm" style="flex:1">Позвонить</a>
+  <a href="#book" class="btn sm" style="flex:1.4">Забронировать</a>
+</div>
+
+<script>
+const ba = document.getElementById('ba');
+const rg = document.getElementById('ba-range');
+if (rg && ba) {
+  rg.addEventListener('input', e => {
+    ba.style.setProperty('--pos', e.target.value + '%');
+  });
+}
+</script>
+</body>
+</html>
