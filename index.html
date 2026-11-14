@@ -6,795 +6,775 @@
 <title>Шаблон сайта детейлинг-студии — Премиальный уход и защита кузова</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #090a0d;
-  --bg-sub: #101117;
+  --bg-sub: #0e1017;
   --card: #14161f;
   --card-hover: #1c1f2b;
   --line: rgba(255, 107, 0, 0.16);
-  --line-strong: rgba(255, 107, 0, 0.38);
+  --line-strong: rgba(255, 107, 0, 0.42);
   --amber: #ff6b00;
   --amber-light: #ff8533;
   --amber-glow: rgba(255, 107, 0, 0.28);
-  --text: #ffffff;
-  --text-dim: #8b8e9e;
-  --text-muted: #5e6170;
-  color-scheme: dark;
+  --text: #f5f5f7;
+  --text-dim: #9aa0a6;
+  --radius: 24px;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
 body {
-  background: var(--bg);
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg);
   color: var(--text);
-  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
 }
-
-/* ТИПОГРАФИКА */
-h1, h2, h3, .logo { font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
-h2 { font-size: clamp(28px, 4vw, 46px); margin-bottom: 14px; }
-p.sub { color: var(--text-dim); max-width: 620px; font-size: 16px; margin-bottom: 40px; }
-.grad-amber {
-  background: linear-gradient(135deg, #ffffff 25%, #ff8533 70%, #ff6b00 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+h1, h2, h3, .logo {
+  font-family: 'Syne', sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 800;
 }
-
-.wrap { max-width: 1220px; margin: 0 auto; position: relative; z-index: 2; }
-section { padding: 110px 6vw; position: relative; }
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
 /* ХЕДЕР */
 header {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 6vw;
-  background: rgba(9, 10, 13, 0.86);
+  position: sticky; top: 0; z-index: 100;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  background: rgba(9, 10, 13, 0.85);
   border-bottom: 1px solid var(--line);
 }
+.nav-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 80px;
+}
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 17px;
-  color: #ffffff;
-  text-decoration: none;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-size: 20px; font-weight: 800; text-transform: uppercase;
+  display: flex; align-items: center; gap: 10px;
 }
 .logo-tag {
-  background: var(--amber);
-  color: #000;
-  font-weight: 800;
-  font-size: 11px;
-  padding: 3px 8px;
-  border-radius: 3px;
-  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, var(--amber), #cc5500);
+  color: #fff; font-size: 11px; padding: 3px 8px; border-radius: 6px;
+  font-family: 'Manrope', sans-serif; font-weight: 700; letter-spacing: 0.05em;
 }
-nav { display: flex; gap: 32px; align-items: center; font-size: 14px; font-weight: 700; color: var(--text-dim); }
-nav a { text-decoration: none; color: inherit; transition: color .25s; }
-nav a:hover { color: var(--amber); }
-
-/* КНОПКИ */
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 14px; font-weight: 600; color: var(--text-dim);
+  transition: color 0.2s, text-shadow 0.2s;
+}
+.nav-links a:hover {
+  color: #fff;
+  text-shadow: 0 0 12px var(--amber-glow);
+}
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 15px 32px;
-  border-radius: 4px;
-  border: 1px solid var(--amber);
-  color: #000000;
-  background: var(--amber);
-  font: 800 13px 'Manrope', sans-serif;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
-  box-shadow: 0 4px 25px var(--amber-glow);
-  transition: transform .25s, box-shadow .25s, background .25s;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 14px 28px; border-radius: 999px; font-weight: 700; font-size: 14px;
+  letter-spacing: 0.02em; text-transform: uppercase; cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: none; outline: none;
+  background: linear-gradient(135deg, var(--amber), #e05500);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(255, 107, 0, 0.35);
 }
 .btn:hover {
   transform: translateY(-2px);
-  background: var(--amber-light);
-  box-shadow: 0 8px 35px rgba(255, 107, 0, 0.5);
+  box-shadow: 0 8px 30px rgba(255, 107, 0, 0.55);
 }
-.btn-amber-outline {
-  background: rgba(255, 107, 0, 0.05);
-  color: #ffffff;
-  border: 1px solid var(--line-strong);
+.btn-outline {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  color: #fff;
   box-shadow: none;
 }
-.btn-amber-outline:hover {
-  background: rgba(255, 107, 0, 0.15);
-  border-color: var(--amber);
-}
-.btn.sm { padding: 9px 20px; font-size: 12px; }
-
-/* HERO */
-#hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding-top: 130px;
-  padding-bottom: 90px;
-  position: relative;
-  background: radial-gradient(ellipse 70% 50% at 75% 45%, rgba(255, 107, 0, 0.12), transparent 70%);
-}
-.hero-split {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 44px;
-  align-items: center;
-}
-.badge-amber {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 16px;
+.btn-outline:hover {
   background: rgba(255, 107, 0, 0.1);
-  border: 1px solid var(--amber);
-  border-radius: 30px;
-  color: var(--amber);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-}
-.badge-amber-dot {
-  width: 6px; height: 6px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 10px var(--amber);
-}
-#hero h1 {
-  font-size: clamp(38px, 5.2vw, 68px);
-  margin-bottom: 24px;
-  line-height: 1.1;
-}
-#hero p {
-  color: var(--text-dim);
-  font-size: 18px;
-  margin-bottom: 36px;
-  max-width: 540px;
-  line-height: 1.65;
-}
-.hero-btns { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 36px; }
-.hero-tags {
-  display: flex;
-  gap: 22px;
-  flex-wrap: wrap;
-  color: var(--text-dim);
-  font-size: 13px;
-  font-weight: 700;
-}
-.hero-tag-item { display: flex; align-items: center; gap: 8px; }
-.hero-tag-item:before { content: ""; width: 5px; height: 5px; background: var(--amber); border-radius: 50%; }
-
-/* HERO СТЕЙДЖ */
-.hero-stage {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--line-strong);
-  background: #101117;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 107, 0, 0.15);
-}
-.hero-stage img {
-  width: 100%;
-  height: 480px;
-  object-fit: cover;
-  display: block;
-}
-.hero-stage-chip {
-  position: absolute;
-  background: rgba(9, 10, 13, 0.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--amber);
-  padding: 10px 18px;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 700;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-}
-.chip-top { top: 20px; right: 20px; }
-.chip-bot { bottom: 20px; left: 20px; }
-.chip-val { font-family: 'Syne', sans-serif; color: var(--amber); font-size: 16px; margin-right: 6px; }
-
-/* ТИКЕР */
-.ticker-bar {
-  overflow: hidden;
-  border-block: 1px solid var(--line);
-  background: #101117;
-  padding: 16px 0;
-  white-space: nowrap;
-}
-.ticker-track {
-  display: inline-block;
-  animation: tick 32s linear infinite;
-  font-family: 'Syne', sans-serif;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  color: var(--text-dim);
-  text-transform: uppercase;
-}
-.ticker-track span { color: var(--amber); margin: 0 26px; }
-@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-/* СЕТКА И СТАНДАРТЫ */
-.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-.stat-card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  padding: 30px;
-  border-radius: 8px;
-  transition: all .3s;
-}
-.stat-card:hover {
   border-color: var(--amber);
-  transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+  box-shadow: 0 0 20px rgba(255, 107, 0, 0.25);
+  transform: translateY(-2px);
 }
-.stat-digit {
-  font-family: 'Syne', sans-serif;
-  font-size: 44px;
-  font-weight: 800;
-  color: var(--amber);
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.stat-text { color: var(--text-dim); font-size: 14px; font-weight: 600; }
+.btn.sm { padding: 10px 20px; font-size: 12px; }
 
-/* ТАБЫ И УСЛУГИ */
+/* HERO ЭКРАН */
+.hero {
+  padding: 90px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute;
+  top: -20%; right: -10%; width: 650px; height: 650px;
+  background: radial-gradient(circle, rgba(255, 107, 0, 0.14) 0%, transparent 70%);
+  filter: blur(80px); pointer-events: none;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1.15fr 0.85fr;
+  gap: 60px; align-items: center;
+}
+.badge-top {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px; border-radius: 999px;
+  background: rgba(255, 107, 0, 0.08); border: 1px solid var(--line);
+  font-size: 12px; font-weight: 700; color: var(--amber-light);
+  margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.05em;
+}
+.badge-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--amber);
+  box-shadow: 0 0 8px var(--amber);
+}
+.hero h1 {
+  font-size: clamp(38px, 5.2vw, 64px);
+  line-height: 1.08; margin-bottom: 24px;
+}
+.grad-amber {
+  background: linear-gradient(135deg, #fff 30%, var(--amber-light) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-desc {
+  font-size: 17px; color: var(--text-dim); max-width: 540px;
+  margin-bottom: 36px; line-height: 1.6;
+}
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+.hero-features {
+  display: flex; gap: 28px; list-style: none;
+  font-size: 13px; color: var(--text-dim); font-weight: 600;
+  border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 24px;
+}
+.hero-features li { display: flex; align-items: center; gap: 8px; }
+.hero-features li::before {
+  content: '•'; color: var(--amber); font-size: 18px;
+}
+.hero-visual {
+  position: relative; border-radius: var(--radius);
+  overflow: hidden; border: 1px solid var(--line);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  background: var(--bg-sub);
+}
+.hero-visual img {
+  width: 100%; height: 500px; object-fit: cover; display: block;
+}
+.hero-badge-float {
+  position: absolute; bottom: 24px; left: 24px;
+  background: rgba(9, 10, 13, 0.88); backdrop-filter: blur(12px);
+  border: 1px solid var(--line-strong); border-radius: 14px;
+  padding: 14px 20px; display: flex; align-items: center; gap: 12px;
+}
+.hero-badge-float .icon {
+  font-size: 18px; color: var(--amber); font-weight: 800; font-family: 'Syne', sans-serif;
+}
+.hero-badge-float .txt { font-size: 13px; font-weight: 700; color: #fff; }
+
+.hero-badge-top {
+  position: absolute; top: 24px; right: 24px;
+  background: rgba(9, 10, 13, 0.88); backdrop-filter: blur(12px);
+  border: 1px solid var(--line-strong); border-radius: 14px;
+  padding: 10px 16px; display: flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 700; color: #fff;
+}
+.hero-badge-top span { color: var(--amber); font-family: 'Syne', sans-serif; font-size: 14px; }
+
+/* ПРЕИМУЩЕСТВА */
+section { padding: 90px 0; }
+.section-title {
+  text-align: center; max-width: 680px; margin: 0 auto 56px;
+}
+.section-title h2 {
+  font-size: clamp(30px, 3.8vw, 44px); margin-bottom: 16px;
+}
+.section-title p { color: var(--text-dim); font-size: 16px; }
+
+.grid-3 {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.std-card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 36px 28px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative; overflow: hidden;
+}
+.std-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--line-strong);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 107, 0, 0.15);
+}
+.std-card .num {
+  font-size: 32px; font-family: 'Syne', sans-serif; font-weight: 800;
+  color: var(--amber); margin-bottom: 16px; line-height: 1;
+}
+.std-card h3 { font-size: 20px; margin-bottom: 12px; }
+.std-card p { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+
+/* УСЛУГИ И ЦЕНЫ */
 .services-tabs {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 34px;
+  display: flex; justify-content: center; gap: 12px;
+  margin-bottom: 40px; flex-wrap: wrap;
 }
 .tab-btn {
-  padding: 12px 24px;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  color: var(--text-dim);
-  font: 700 13px 'Manrope', sans-serif;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all .25s;
+  padding: 10px 24px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03); border: 1px solid var(--line);
+  color: var(--text-dim); font-size: 13px; font-weight: 700;
+  cursor: pointer; transition: all 0.25s; text-transform: uppercase;
 }
 .tab-btn:hover {
-  border-color: var(--amber);
-  color: #ffffff;
+  color: #fff; border-color: var(--amber);
 }
 .tab-btn.active {
-  background: var(--amber);
+  background: var(--amber); color: #fff;
   border-color: var(--amber);
-  color: #000000;
-  font-weight: 800;
+  box-shadow: 0 4px 18px var(--amber-glow);
+}
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.service-card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--line-strong);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 35px rgba(255, 107, 0, 0.18);
+}
+.service-img {
+  width: 100%; height: 210px; object-fit: cover; display: block;
+}
+.service-body {
+  padding: 28px; display: flex; flex-direction: column; flex-grow: 1;
+}
+.service-tag {
+  display: inline-block; align-self: flex-start;
+  padding: 4px 12px; border-radius: 6px;
+  background: rgba(255, 107, 0, 0.12); color: var(--amber-light);
+  font-size: 11px; font-weight: 800; letter-spacing: 0.05em;
+  text-transform: uppercase; margin-bottom: 14px;
+}
+.service-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 12px; margin-bottom: 12px;
+}
+.service-header h3 { font-size: 20px; }
+.service-price {
+  font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800;
+  color: var(--amber); white-space: nowrap;
+}
+.service-body p {
+  font-size: 14px; color: var(--text-dim); line-height: 1.6;
+  margin-bottom: 24px; flex-grow: 1;
+}
+.service-btn {
+  width: 100%; padding: 12px; border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03); border: 1px solid var(--line);
+  color: #fff; font-size: 13px; font-weight: 700; text-transform: uppercase;
+  cursor: pointer; transition: all 0.25s; text-align: center;
+}
+.service-btn:hover {
+  background: var(--amber); border-color: var(--amber);
   box-shadow: 0 4px 20px var(--amber-glow);
 }
 
-.svc-card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: all .35s;
-  display: flex;
-  flex-direction: column;
+/* ДО И ПОСЛЕ */
+.before-after-box {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); overflow: hidden;
+  max-width: 960px; margin: 0 auto;
 }
-.svc-card:hover {
-  border-color: var(--amber);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 45px rgba(0,0,0,0.7), 0 0 20px var(--amber-glow);
-}
-.svc-thumb {
-  height: 200px;
-  overflow: hidden;
-  position: relative;
-}
-.svc-thumb img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform .5s;
-}
-.svc-card:hover .svc-thumb img { transform: scale(1.06); }
-.svc-badge {
-  position: absolute;
-  top: 14px; left: 14px;
-  background: rgba(9, 10, 13, 0.9);
-  color: var(--amber);
-  font-weight: 800;
-  padding: 4px 10px;
-  border-radius: 3px;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border: 1px solid var(--amber);
-}
-.svc-content { padding: 26px; display: flex; flex-direction: column; flex: 1; }
-.svc-title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
-.svc-content h3 { font-size: 19px; color: #ffffff; }
-.svc-price {
-  font-family: 'Syne', sans-serif;
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--amber);
-  white-space: nowrap;
-}
-.svc-content p { color: var(--text-dim); font-size: 14px; margin-bottom: 22px; line-height: 1.6; flex: 1; }
-
-/* ДО / ПОСЛЕ */
-.ba-box {
-  position: relative;
-  width: 100%;
-  height: 520px;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid var(--amber);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+.ba-container {
+  position: relative; width: 100%; height: 480px; overflow: hidden;
   --pos: 50%;
 }
-.ba-layer {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
+.ba-img {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background-size: cover; background-position: center;
 }
 .ba-after {
-  background-image: url('https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1600&q=85');
+  background-image: url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80');
 }
 .ba-before {
-  background-image: url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1600&q=85');
+  background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80');
   clip-path: polygon(0 0, var(--pos) 0, var(--pos) 100%, 0 100%);
-  filter: contrast(0.85) brightness(0.85);
 }
-.ba-badge {
-  position: absolute;
-  bottom: 20px;
-  background: rgba(9, 10, 13, 0.9);
-  border: 1px solid var(--amber);
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #ffffff;
+.ba-slider-line {
+  position: absolute; top: 0; bottom: 0; left: var(--pos);
+  width: 3px; background: var(--amber);
+  box-shadow: 0 0 16px var(--amber); pointer-events: none;
+  transform: translateX(-50%);
 }
-.ba-after .ba-badge {{ right: 20px; }}
-.ba-before .ba-badge {{ left: 20px; }}
-.ba-line {
-  position: absolute;
-  top: 0; bottom: 0;
-  left: var(--pos);
-  width: 2px;
-  background: var(--amber);
-  box-shadow: 0 0 20px var(--amber);
-  pointer-events: none;
+.ba-handle {
+  position: absolute; top: 50%; left: var(--pos);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: #fff; border: 3px solid var(--amber);
+  transform: translate(-50%, -50%);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  pointer-events: none; font-size: 16px; color: var(--amber); font-weight: 800;
 }
-.ba-knob {
-  position: absolute;
-  top: 50%; left: -19px;
-  width: 38px; height: 38px;
-  margin-top: -19px;
-  border-radius: 50%;
-  background: #090a0d;
-  border: 2px solid var(--amber);
-  box-shadow: 0 0 25px var(--amber);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: 800;
-  color: var(--amber);
+.ba-range {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  opacity: 0; cursor: ew-resize; z-index: 10;
 }
-.ba-range-input {
-  position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-  opacity: 0;
-  cursor: ew-resize;
+.ba-labels {
+  display: flex; justify-content: space-between;
+  padding: 16px 24px; background: var(--bg-sub);
+  font-size: 13px; font-weight: 700; text-transform: uppercase;
+  color: var(--text-dim); border-top: 1px solid var(--line);
+}
+.ba-labels span.amber { color: var(--amber); }
+
+/* ОТЗЫВЫ И ЯНДЕКС КАРТЫ */
+.reviews-map-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 28px; align-items: stretch;
 }
 
-/* БЛОК ОТЗЫВОВ И ЯНДЕКС КАРТ */
-.reviews-map-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  margin-top: 20px;
-}
-.reviews-card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 34px;
-  display: flex;
-  flex-direction: column;
+/* 3D РУЛЕТКА ОТЗЫВОВ */
+.roulette-container {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 36px 32px;
+  display: flex; flex-direction: column; position: relative;
+  overflow: hidden;
 }
 .ymap-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(255, 107, 0, 0.1);
-  border: 1px solid var(--amber);
-  padding: 8px 16px;
-  border-radius: 4px;
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255, 107, 0, 0.08); border: 1px solid var(--line);
+  border-radius: 999px; padding: 6px 16px; align-self: flex-start;
   margin-bottom: 24px;
 }
-.ymap-stars { color: var(--amber); font-size: 16px; font-weight: 800; letter-spacing: 2px; }
-.ymap-score { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: #ffffff; }
-.ymap-desc { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; }
-
-.review-item {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+.ymap-score {
+  font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800;
+  color: var(--amber);
 }
-.review-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-.review-text { font-size: 14px; color: var(--text-dim); line-height: 1.6; margin-bottom: 10px; font-style: italic; }
-.review-author { display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 700; }
-.review-name { color: #ffffff; }
-.review-car { color: var(--amber); }
+.ymap-stars { color: var(--amber); font-size: 13px; letter-spacing: 2px; }
+.ymap-desc { font-size: 12px; color: var(--text-dim); font-weight: 600; }
 
-/* КАРТОЧКА КАРТЫ */
+.roulette-viewport {
+  position: relative; height: 260px;
+  perspective: 1000px; margin-bottom: 24px;
+}
+.roulette-card {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: var(--bg-sub); border: 1px solid var(--line-strong);
+  border-radius: 20px; padding: 28px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  opacity: 0; pointer-events: none;
+  transform: translateY(60px) rotateX(-20deg) scale(0.9);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+.roulette-card.active {
+  opacity: 1; pointer-events: auto;
+  transform: translateY(0) rotateX(0deg) scale(1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 107, 0, 0.12);
+}
+.roulette-card.prev {
+  opacity: 0.3; transform: translateY(-70px) rotateX(20deg) scale(0.92);
+}
+.roulette-card.next {
+  opacity: 0.3; transform: translateY(70px) rotateX(-20deg) scale(0.92);
+}
+.roulette-card.hidden { display: none; }
+.roulette-text {
+  font-size: 15px; color: var(--text); line-height: 1.6;
+  font-style: italic;
+}
+.roulette-author {
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 16px;
+  margin-top: 16px;
+}
+.roulette-name { font-weight: 700; font-size: 14px; color: #fff; }
+.roulette-car { font-size: 13px; color: var(--amber-light); font-weight: 600; }
+
+.roulette-controls {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: auto;
+}
+.roulette-dots { display: flex; gap: 8px; }
+.r-dot {
+  width: 24px; height: 4px; border-radius: 2px;
+  background: rgba(255, 255, 255, 0.15); cursor: pointer;
+  transition: all 0.25s;
+}
+.r-dot.active {
+  background: var(--amber); width: 36px;
+  box-shadow: 0 0 10px var(--amber-glow);
+}
+.roulette-arrows { display: flex; gap: 8px; }
+.r-arrow {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line);
+  color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 14px; transition: all 0.2s;
+}
+.r-arrow:hover {
+  background: var(--amber); border-color: var(--amber);
+}
+
+/* КАРТА */
 .map-box {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); overflow: hidden;
+  display: flex; flex-direction: column;
 }
-.map-iframe-container {
-  height: 380px;
-  position: relative;
-  background: #101117;
+.map-iframe-wrap {
+  width: 100%; height: 310px; position: relative;
+  background: #111; overflow: hidden;
 }
-.map-iframe-container iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
+.map-iframe-wrap iframe {
+  width: 100%; height: 100%; border: 0;
   filter: invert(90%) hue-rotate(180deg) brightness(85%) contrast(120%);
 }
-.map-info-bar {
-  padding: 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  background: var(--card);
-  border-top: 1px solid var(--line);
+.map-info {
+  padding: 24px 28px; background: var(--bg-sub);
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; border-top: 1px solid var(--line);
 }
-.map-info-bar h4 { font-size: 16px; color: #ffffff; margin-bottom: 4px; }
-.map-info-bar p { font-size: 13px; color: var(--text-dim); }
+.map-info h4 { font-size: 16px; margin-bottom: 4px; }
+.map-info p { font-size: 13px; color: var(--text-dim); }
 
-/* ФОРМА ЗАПИСИ (ОСТАВИТЬ ЗАЯВКУ) */
+/* ФОРМА ЗАЯВКИ */
 .form-box {
-  background: var(--card);
-  border: 1px solid var(--line-strong);
-  border-radius: 8px;
-  padding: 44px 40px;
-  max-width: 680px;
-  margin: 0 auto;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 48px;
+  max-width: 640px; margin: 0 auto; text-align: center;
 }
-.form-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }
-input {
-  width: 100%;
-  background: #090a0d;
-  border: 1px solid var(--line);
-  color: #ffffff;
-  padding: 15px 18px;
-  border-radius: 4px;
-  font: 600 15px 'Manrope', sans-serif;
-  transition: border-color .25s;
+.form-box h2 { font-size: 32px; margin-bottom: 12px; }
+.form-box p { color: var(--text-dim); font-size: 15px; margin-bottom: 32px; }
+.form-grid { display: flex; flex-direction: column; gap: 16px; }
+.form-grid input {
+  width: 100%; padding: 16px 20px; border-radius: 14px;
+  background: var(--bg-sub); border: 1px solid var(--line);
+  color: #fff; font-size: 15px; font-family: inherit;
+  outline: none; transition: border-color 0.25s, box-shadow 0.25s;
 }
-input:focus {
-  outline: none;
+.form-grid input:focus {
   border-color: var(--amber);
+  box-shadow: 0 0 16px var(--amber-glow);
 }
+.form-grid input::placeholder { color: #5a5f6d; }
+
+/* ФУТЕР */
+footer {
+  border-top: 1px solid var(--line); padding: 48px 0;
+  background: var(--bg); font-size: 13px; color: var(--text-dim);
+}
+.footer-row {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 24px;
+}
+.footer-contacts { display: flex; gap: 24px; }
+.footer-contacts a:hover { color: var(--amber-light); }
 
 /* МОБИЛЬНЫЙ БАР */
 .mobile-bar {
-  display: none;
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  background: rgba(9, 10, 13, 0.96);
-  border-top: 1px solid var(--line);
-  padding: 12px 18px;
-  z-index: 90;
-  gap: 12px;
+  display: none; position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(9, 10, 13, 0.95); backdrop-filter: blur(16px);
+  border-top: 1px solid var(--line); padding: 12px 20px;
+  z-index: 99; gap: 12px;
 }
 
 @media (max-width: 900px) {
-  .hero-split { grid-template-columns: 1fr; }
-  .hero-stage { order: -1; }
-  .hero-stage img { height: 320px; }
-  nav { display: none; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .grid-3, .services-grid { grid-template-columns: 1fr; }
   .reviews-map-grid { grid-template-columns: 1fr; }
-  .map-iframe-container { height: 260px; }
+  .nav-links { display: none; }
   .mobile-bar { display: flex; }
-  body { padding-bottom: 70px; }
+  .form-box { padding: 32px 20px; }
 }
 </style>
 </head>
-<body>
+<body id="top">
 
 <!-- ХЕДЕР -->
 <header>
-  <a href="#top" class="logo">
-    <span class="logo-tag">PREMIUM</span>
-    Студия детейлинга
-  </a>
-  <nav>
-    <a href="#services">Услуги и цены</a>
-    <a href="#gallery">Результаты</a>
-    <a href="#reviews">Отзывы и адрес</a>
-    <a href="#book">Контакты</a>
-  </nav>
-  <a href="#book" class="btn sm">Оставить заявку</a>
+  <div class="wrap">
+    <div class="nav-bar">
+      <a href="#top" class="logo">
+        <span class="logo-tag">PREMIUM</span>
+        Студия детейлинга
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Услуги и цены</a></li>
+        <li><a href="#results">Результаты</a></li>
+        <li><a href="#reviews">Отзывы и адрес</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+      <a href="#book" class="btn sm">Оставить заявку</a>
+    </div>
+  </div>
 </header>
 
 <!-- HERO -->
-<section id="hero">
+<section class="hero">
   <div class="wrap">
-    <div class="hero-split">
+    <div class="hero-grid">
       <div>
-        <div class="badge-amber">
-          <span class="badge-amber-dot"></span> Закрытый детейлинг-бокс · Москва
+        <div class="badge-top">
+          <span class="badge-dot"></span>
+          Закрытый детейлинг-бокс · Москва
         </div>
         <h1>Здесь будет название <span class="grad-amber">вашей студии</span></h1>
-        <p>Профессиональная оклейка полиуретановой бронепленкой, восстановительная полировка кузова и нанесение кварцевых защитных составов с гарантией по договору.</p>
-        <div class="hero-btns">
+        <p class="hero-desc">Профессиональная оклейка полиуретановой бронепленкой, восстановительная полировка кузова и нанесение кварцевых защитных составов с гарантией по договору.</p>
+        <div class="hero-actions">
           <a href="#book" class="btn">Забронировать осмотр</a>
-          <a href="#services" class="btn btn-amber-outline">Каталог услуг</a>
+          <a href="#services" class="btn btn-outline">Каталог услуг</a>
         </div>
-        <div class="hero-tags">
-          <span class="hero-tag-item">Электронный замер толщины ЛКП</span>
-          <span class="hero-tag-item">Охраняемый закрытый бокс 24/7</span>
-          <span class="hero-tag-item">Сертифицированные мастера</span>
-        </div>
+        <ul class="hero-features">
+          <li>Электронный замер толщины ЛКП</li>
+          <li>Охраняемый закрытый бокс 24/7</li>
+          <li>Сертифицированные мастера</li>
+        </ul>
       </div>
-      <div>
-        <div class="hero-stage">
-          <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=1200&q=85" alt="Автомобиль в детейлинге">
-          <div class="hero-stage-chip chip-top">
-            <span class="chip-val">200 мкм</span> Бронепленка кузова
-          </div>
-          <div class="hero-stage-chip chip-bot">
-            <span class="chip-val">9H</span> Кварцевая керамика
-          </div>
+
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80" alt="Премиальный автомобиль в детейлинг-студии" loading="lazy">
+        <div class="hero-badge-top">
+          <span>200 МКМ</span> Бронепленка кузова
+        </div>
+        <div class="hero-badge-float">
+          <div class="icon">9H</div>
+          <div class="txt">Кварцевая керамика</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ТИКЕР -->
-<div class="ticker-bar">
-  <div class="ticker-track">
-    АНТИГРАВИЙНЫЙ ПОЛИУРЕТАН <span>✦</span> ВОССТАНОВИТЕЛЬНАЯ ПОЛИРОВКА <span>✦</span> КВАРЦЕВАЯ КЕРАМИКА <span>✦</span> ДЕТЕЙЛИНГ ИНТЕРЬЕРА <span>✦</span> ЗАЩИТА ОПТИКИ И ДИСКОВ <span>✦</span> ГАРАНТИЯ ПО ДОГОВОРУ <span>✦</span>
-    АНТИГРАВИЙНЫЙ ПОЛИУРЕТАН <span>✦</span> ВОССТАНОВИТЕЛЬНАЯ ПОЛИРОВКА <span>✦</span> КВАРЦЕВАЯ КЕРАМИКА <span>✦</span> ДЕТЕЙЛИНГ ИНТЕРЬЕРА <span>✦</span> ЗАЩИТА ОПТИКИ И ДИСКОВ <span>✦</span> ГАРАНТИЯ ПО ДОГОВОРУ <span>✦</span>
-  </div>
-</div>
-
-<!-- ЦИФРЫ И СТАНДАРТЫ -->
-<section id="standards" style="padding-block:70px;background:var(--bg-sub);border-bottom:1px solid var(--line);">
+<!-- СТАНДАРТЫ -->
+<section style="background:var(--bg-sub);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
   <div class="wrap">
-    <div class="grid-4">
-      <div class="stat-card">
-        <div class="stat-digit">200+</div>
-        <div class="stat-text">Микрон толщина защитного слоя премиального полиуретана</div>
+    <div class="section-title">
+      <h2>Стандарты премиального сервиса</h2>
+      <p>Контролируем каждый этап работ: от бесконтактного приема до передачи готового автомобиля в закрытом боксе.</p>
+    </div>
+    <div class="grid-3">
+      <div class="std-card">
+        <div class="num">01</div>
+        <h3>Чистая зона</h3>
+        <p>Изолированные боксы с промышленной фильтрацией воздуха исключают попадание пыли под защитную пленку при монтаже.</p>
       </div>
-      <div class="stat-card">
-        <div class="stat-digit">5500K</div>
-        <div class="stat-text">Студийный свет с индексом цветопередачи CRI 98 в боксе</div>
+      <div class="std-card">
+        <div class="num">02</div>
+        <h3>Проверка ЛКП</h3>
+        <p>Выполняем ультразвуковой замер заводского слоя лака в 40 точках перед началом восстановительной полировки.</p>
       </div>
-      <div class="stat-card">
-        <div class="stat-digit">100%</div>
-        <div class="stat-text">Удаление паутины и голограмм без истончения заводского лака</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-digit">5 лет</div>
-        <div class="stat-text">Официальная гарантия на бронепленку с фиксацией в договоре</div>
+      <div class="std-card">
+        <div class="num">03</div>
+        <h3>Акт и гарантия</h3>
+        <p>Выдаем гарантийный талон и паспорт выполненных процедур с детальным перечнем нанесенных составов.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- УСЛУГИ И ЦЕНЫ С ТАБАМИ -->
+<!-- УСЛУГИ И ЦЕНЫ -->
 <section id="services">
   <div class="wrap">
-    <h2>Услуги и цены</h2>
-    <p class="sub">Выберите категорию для ознакомления со стоимостью и составом комплексов.</p>
-    
+    <div class="section-title">
+      <h2>Услуги и цены</h2>
+      <p>Выберите категорию для ознакомления с перечнем услуг, составом работ и стоимостью.</p>
+    </div>
+
     <div class="services-tabs">
-      <button class="tab-btn active" onclick="switchCategory('armor', this)">Защитная бронепленка</button>
-      <button class="tab-btn" onclick="switchCategory('polish', this)">Полировка и керамика</button>
-      <button class="tab-btn" onclick="switchCategory('interior', this)">Детейлинг интерьера</button>
+      <button class="tab-btn active" onclick="switchCategory(0, this)">Блок услуг 1</button>
+      <button class="tab-btn" onclick="switchCategory(1, this)">Блок услуг 2</button>
+      <button class="tab-btn" onclick="switchCategory(2, this)">Блок услуг 3</button>
+      <button class="tab-btn" onclick="switchCategory(3, this)">Блок услуг 4</button>
     </div>
 
-    <!-- КАТЕГОРИЯ: БРОНЕПЛЕНКА -->
-    <div id="cat-armor" class="grid-3 tab-content">
-      
-      <div class="svc-card">
-        <div class="svc-thumb">
-          <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80" alt="Зоны риска">
-          <span class="svc-badge">Хит защиты</span>
-        </div>
-        <div class="svc-content">
-          <div class="svc-title-row">
-            <h3>Оклейка зон риска</h3>
-            <span class="svc-price">от 65 000 ₽</span>
+    <!-- ТАБ 1 -->
+    <div class="services-grid tab-content" id="cat-0">
+      <div class="service-card">
+        <img class="service-img" src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80" alt="Услуга 1" loading="lazy">
+        <div class="service-body">
+          <span class="service-tag">Услуга 1</span>
+          <div class="service-header">
+            <h3>Услуга 1</h3>
+            <span class="service-price">от 0 000 ₽</span>
           </div>
-          <p>Бампер целиком, капот, передние крылья, фары, стойки лобового стекла и зоны под ручками. Защита от прямого удара щебня на трассе.</p>
-          <button class="btn btn-amber-outline sm" onclick="bookService('Оклейка зон риска')">Записаться</button>
+          <p>Здесь будет подробное описание первой услуги, перечень применяемых материалов, регламент работ и итоговый результат для автомобиля.</p>
+          <button class="service-btn" onclick="bookService('Услуга 1')">Записаться</button>
         </div>
       </div>
 
-      <div class="svc-card">
-        <div class="svc-thumb">
-          <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=800&q=80" alt="Полная оклейка">
-          <span class="svc-badge">Максимум</span>
-        </div>
-        <div class="svc-content">
-          <div class="svc-title-row">
-            <h3>Полная оклейка кузова</h3>
-            <span class="svc-price">от 180 000 ₽</span>
+      <div class="service-card">
+        <img class="service-img" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Услуга 2" loading="lazy">
+        <div class="service-body">
+          <span class="service-tag">Услуга 2</span>
+          <div class="service-header">
+            <h3>Услуга 2</h3>
+            <span class="service-price">от 0 000 ₽</span>
           </div>
-          <p>Тотальное бронирование всех окрашенных деталей кузова полиуретаном толщиной 200 микрон с глубоким подворотом краев.</p>
-          <button class="btn btn-amber-outline sm" onclick="bookService('Полная оклейка кузова')">Записаться</button>
+          <p>Здесь будет подробное описание второй услуги, перечень применяемых материалов, регламент работ и итоговый результат для автомобиля.</p>
+          <button class="service-btn" onclick="bookService('Услуга 2')">Записаться</button>
         </div>
       </div>
 
-      <div class="svc-card">
-        <div class="svc-thumb">
-          <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80" alt="Бронирование фар">
-          <span class="svc-badge">Оптика</span>
-        </div>
-        <div class="svc-content">
-          <div class="svc-title-row">
-            <h3>Защита фар и глянца</h3>
-            <span class="svc-price">от 12 000 ₽</span>
+      <div class="service-card">
+        <img class="service-img" src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Услуга 3" loading="lazy">
+        <div class="service-body">
+          <span class="service-tag">Услуга 3</span>
+          <div class="service-header">
+            <h3>Услуга 3</h3>
+            <span class="service-price">от 0 000 ₽</span>
           </div>
-          <p>Бронирование передней и задней оптики, противотуманных фар и черных глянцевых стоек кузова самозатягивающейся пленкой.</p>
-          <button class="btn btn-amber-outline sm" onclick="bookService('Защита фар и глянца')">Записаться</button>
+          <p>Здесь будет подробное описание третьей услуги, перечень применяемых материалов, регламент работ и итоговый результат для автомобиля.</p>
+          <button class="service-btn" onclick="bookService('Услуга 3')">Записаться</button>
         </div>
       </div>
-
     </div>
 
-    <!-- КАТЕГОРИЯ: ПОЛИРОВКА И КЕРАМИКА -->
-    <div id="cat-polish" class="grid-3 tab-content" style="display:none;">
-      
-      <div class="svc-card">
-        <div class="svc-thumb">
-          <img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=800&q=80" alt="Восстановительная полировка">
-          <span class="svc-badge">Коррекция</span>
-        </div>
-        <div class="svc-content">
-          <div class="svc-title-row">
-            <h3>Мягкая полировка кузова</h3>
-            <span class="svc-price">от 25 000 ₽</span>
+    <!-- ТАБ 2 -->
+    <div class="services-grid tab-content" id="cat-1" style="display:none;">
+      <div class="service-card">
+        <img class="service-img" src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80" alt="Услуга 4" loading="lazy">
+        <div class="service-body">
+          <span class="service-tag">Услуга 4</span>
+          <div class="service-header">
+            <h3>Услуга 4</h3>
+            <span class="service-price">от 0 000 ₽</span>
           </div>
-          <p>Многоэтапное удаление паутины от моек и налета без чрезмерного истончения лака. Контроль толщиномером каждого элемента.</p>
-          <button class="btn btn-amber-outline sm" onclick="bookService('Мягкая полировка кузова')">Записаться</button>
+          <p>Здесь будет подробное описание четвертой услуги, перечень применяемых материалов, регламент работ и итоговый результат для автомобиля.</p>
+          <button class="service-btn" onclick="bookService('Услуга 4')">Записаться</button>
         </div>
       </div>
 
-      <div class="svc-card">
-        <div class="svc-thumb">
-          <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=800&q=80" alt="Керамика 9H">
-          <span class="svc-badge">Гидрофоб</span>
-        </div>
-        <div class="svc-content">
-          <div class="svc-title-row">
-            <h3>Кварцевая керамика 9H</h3>
-            <span class="svc-price">от 35 000 ₽</span>
+      <div class="service-card">
+        <img class="service-img" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Услуга 5" loading="lazy">
+        <div class="service-body">
+          <span class="service-tag">Услуга 5</span>
+          <div class="service-header">
+            <h3>Услуга 5</h3>
+            <span class="service-price">от 0 000 ₽</span>
           </div>
-          <p>Нанесение от 2 до 4 слоев керамических составов. Глубокий зеркальный блеск, мощный гидрофоб и защита от реагентов.</p>
-          <button class="btn btn-amber-outline sm" onclick="bookService('Кварцевая керамика 9H')">Записаться</button>
+          <p>Здесь будет подробное описание пятой услуги, перечень применяемых материалов, регламент работ и итоговый результат для автомобиля.</p>
+          <button class="service-btn" onclick="bookService('Услуга 5')">Записаться</button>
         </div>
       </div>
 
-      <div class="svc-card">
-        <div class="svc-thumb">
-          <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80" alt="Керамика дисков">
-          <span class="svc-badge">Термозащита</span>
-        </div>
-        <div class="svc-content">
-          <div class="svc-title-row">
-            <h3>Керамика дисков и суппортов</h3>
-            <span class="svc-price">от 14 000 ₽</span>
+      <div class="service-card">
+        <img class="service-img" src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Услуга 6" loading="lazy">
+        <div class="service-body">
+          <span class="service-tag">Услуга 6</span>
+          <div class="service-header">
+            <h3>Услуга 6</h3>
+            <span class="service-price">от 0 000 ₽</span>
           </div>
-          <p>Жаропрочный гидрофобный состав защищает кованые диски и суппорты от въедающейся горячей тормозной пыли.</p>
-          <button class="btn btn-amber-outline sm" onclick="bookService('Керамика дисков и суппортов')">Записаться</button>
+          <p>Здесь будет подробное описание шестой услуги, перечень применяемых материалов, регламент работ и итоговый результат для автомобиля.</p>
+          <button class="service-btn" onclick="bookService('Услуга 6')">Записаться</button>
         </div>
       </div>
-
     </div>
 
-    <!-- КАТЕГОРИЯ: ИНТЕРЬЕР -->
-    <div id="cat-interior" class="grid-3 tab-content" style="display:none;">
-      
-      <div class="svc-card">
-        <div class="svc-thumb">
-          <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80" alt="Химчистка">
-          <span class="svc-badge">Интерьер</span>
-        </div>
-        <div class="svc-content">
-          <div class="svc-title-row">
-            <h3>Деликатная химчистка салона</h3>
-            <span class="svc-price">от 18 000 ₽</span>
+    <!-- ТАБ 3 -->
+    <div class="services-grid tab-content" id="cat-2" style="display:none;">
+      <div class="service-card">
+        <img class="service-img" src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80" alt="Услуга 7" loading="lazy">
+        <div class="service-body">
+          <span class="service-tag">Услуга 7</span>
+          <div class="service-header">
+            <h3>Услуга 7</h3>
+            <span class="service-price">от 0 000 ₽</span>
           </div>
-          <p>Полная разборная или поверхностная очистка кожи, текстиля, пластика и алькантары с последующей антибактериальной обработкой.</p>
-          <button class="btn btn-amber-outline sm" onclick="bookService('Деликатная химчистка салона')">Записаться</button>
+          <p>Здесь будет подробное описание седьмой услуги, перечень применяемых материалов, регламент работ и итоговый результат для автомобиля.</p>
+          <button class="service-btn" onclick="bookService('Услуга 7')">Записаться</button>
         </div>
       </div>
 
-      <div class="svc-card">
-        <div class="svc-thumb">
-          <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80" alt="Керамика кожи">
-          <span class="svc-badge">Защита кожи</span>
-        </div>
-        <div class="svc-content">
-          <div class="svc-title-row">
-            <h3>Керамическая защита кожи</h3>
-            <span class="svc-price">от 14 000 ₽</span>
+      <div class="service-card">
+        <img class="service-img" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Услуга 8" loading="lazy">
+        <div class="service-body">
+          <span class="service-tag">Услуга 8</span>
+          <div class="service-header">
+            <h3>Услуга 8</h3>
+            <span class="service-price">от 0 000 ₽</span>
           </div>
-          <p>Барьерный состав предотвращает окрашивание светлой кожи джинсами, появление заломов и растрескивание от ультрафиолета.</p>
-          <button class="btn btn-amber-outline sm" onclick="bookService('Керамическая защита кожи')">Записаться</button>
+          <p>Здесь будет подробное описание восьмой услуги, перечень применяемых материалов, регламент работ и итоговый результат для автомобиля.</p>
+          <button class="service-btn" onclick="bookService('Услуга 8')">Записаться</button>
         </div>
       </div>
 
-      <div class="svc-card">
-        <div class="svc-thumb">
-          <img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=800&q=80" alt="Озонация">
-          <span class="svc-badge">Свежесть</span>
-        </div>
-        <div class="svc-content">
-          <div class="svc-title-row">
-            <h3>Озонирование и кондиционирование</h3>
-            <span class="svc-price">от 5 000 ₽</span>
+      <div class="service-card">
+        <img class="service-img" src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Услуга 9" loading="lazy">
+        <div class="service-body">
+          <span class="service-tag">Услуга 9</span>
+          <div class="service-header">
+            <h3>Услуга 9</h3>
+            <span class="service-price">от 0 000 ₽</span>
           </div>
-          <p>Удаление въевшихся посторонних запахов, очистка воздуховодов кондиционера и пропитка кожи увлажняющими бальзамами.</p>
-          <button class="btn btn-amber-outline sm" onclick="bookService('Озонирование и кондиционирование')">Записаться</button>
+          <p>Здесь будет подробное описание девятой услуги, перечень применяемых материалов, регламент работ и итоговый результат для автомобиля.</p>
+          <button class="service-btn" onclick="bookService('Услуга 9')">Записаться</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ТАБ 4 -->
+    <div class="services-grid tab-content" id="cat-3" style="display:none;">
+      <div class="service-card">
+        <img class="service-img" src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80" alt="Услуга 10" loading="lazy">
+        <div class="service-body">
+          <span class="service-tag">Услуга 10</span>
+          <div class="service-header">
+            <h3>Услуга 10</h3>
+            <span class="service-price">от 0 000 ₽</span>
+          </div>
+          <p>Здесь будет подробное описание десятой услуги, перечень применяемых материалов, регламент работ и итоговый результат для автомобиля.</p>
+          <button class="service-btn" onclick="bookService('Услуга 10')">Записаться</button>
         </div>
       </div>
 
+      <div class="service-card">
+        <img class="service-img" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Услуга 11" loading="lazy">
+        <div class="service-body">
+          <span class="service-tag">Услуга 11</span>
+          <div class="service-header">
+            <h3>Услуга 11</h3>
+            <span class="service-price">от 0 000 ₽</span>
+          </div>
+          <p>Здесь будет подробное описание одиннадцатой услуги, перечень применяемых материалов, регламент работ и итоговый результат для автомобиля.</p>
+          <button class="service-btn" onclick="bookService('Услуга 11')">Записаться</button>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <img class="service-img" src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Услуга 12" loading="lazy">
+        <div class="service-body">
+          <span class="service-tag">Услуга 12</span>
+          <div class="service-header">
+            <h3>Услуга 12</h3>
+            <span class="service-price">от 0 000 ₽</span>
+          </div>
+          <p>Здесь будет подробное описание двенадцатой услуги, перечень применяемых материалов, регламент работ и итоговый результат для автомобиля.</p>
+          <button class="service-btn" onclick="bookService('Услуга 12')">Записаться</button>
+        </div>
+      </div>
     </div>
 
   </div>
 </section>
 
-<!-- ДО / ПОСЛЕ -->
-<section id="gallery" style="background:var(--bg-sub);border-block:1px solid var(--line);">
+<!-- ДО И ПОСЛЕ -->
+<section id="results" style="background:var(--bg-sub);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
   <div class="wrap">
-    <h2>Результат полировки до и после</h2>
-    <p class="sub">Потяните ползунок в центре для сравнения состояния лакокрасочного покрытия.</p>
-    
-    <div class="ba-box" id="ba">
-      <div class="ba-layer ba-after">
-        <span class="ba-badge">После: Зеркальный глянец и керамика</span>
+    <div class="section-title">
+      <h2>Результат полировки до и после</h2>
+      <p>Потяните ползунок в центре для сравнения состояния лакокрасочного покрытия.</p>
+    </div>
+
+    <div class="before-after-box">
+      <div class="ba-container" id="ba">
+        <div class="ba-img ba-after"></div>
+        <div class="ba-img ba-before"></div>
+        <div class="ba-slider-line"></div>
+        <div class="ba-handle">↔</div>
+        <input type="range" min="0" max="100" value="50" class="ba-range" id="ba-range">
       </div>
-      <div class="ba-layer ba-before">
-        <span class="ba-badge">До: Сетка царапин и матовый налет</span>
+      <div class="ba-labels">
+        <span>До обработки</span>
+        <span class="amber">После восстановительной полировки</span>
       </div>
-      <div class="ba-line">
-        <div class="ba-knob">◀ ▶</div>
-      </div>
-      <input type="range" min="0" max="100" value="50" class="ba-range-input" id="ba-range" aria-label="Сравнить До и После">
     </div>
   </div>
 </section>
@@ -802,59 +782,82 @@ input:focus {
 <!-- ОТЗЫВЫ И ЯНДЕКС КАРТЫ -->
 <section id="reviews">
   <div class="wrap">
-    <h2>Отзывы и локация в Яндекс Картах</h2>
-    <p class="sub">Реальные оценки автовладельцев и схема проезда к закрытому боксу студии.</p>
-    
+    <div class="section-title">
+      <h2>Отзывы и локация на Яндекс Картах</h2>
+      <p>Потяните рулетку отзывов вверх или вниз для переключения реальных оценок клиентов.</p>
+    </div>
+
     <div class="reviews-map-grid">
-      
-      <!-- КОЛОНКА ОТЗЫВОВ -->
-      <div class="reviews-card">
+
+      <!-- 3D РУЛЕТКА ОТЗЫВОВ -->
+      <div class="roulette-container">
         <div class="ymap-badge">
           <span class="ymap-score">5.0</span>
           <span class="ymap-stars">★★★★★</span>
           <span class="ymap-desc">Яндекс Карты</span>
         </div>
 
-        <div class="review-item">
-          <p class="review-text">«Пригонял автомобиль на комплексную оклейку зон риска и керамику. Сделали все четко по регламенту, зазоры ровные, пленку подвернули идеально. Рекомендую.»</p>
-          <div class="review-author">
-            <span class="review-name">Михаил С.</span>
-            <span class="review-car">BMW X5 M</span>
+        <div class="roulette-viewport" id="roulette-vp">
+          <div class="roulette-card active" data-idx="0">
+            <p class="roulette-text">«Здесь будет реальный отзыв вашего клиента из Яндекс Карт о качестве полировки, аккуратности мастеров и полученном результате для автомобиля.»</p>
+            <div class="roulette-author">
+              <span class="roulette-name">Имя клиента 1</span>
+              <span class="roulette-car">Марка авто / Услуга</span>
+            </div>
+          </div>
+
+          <div class="roulette-card next" data-idx="1">
+            <p class="roulette-text">«Здесь будет реальный отзыв вашего клиента из Яндекс Карт об идеальной оклейке кузова бронепленкой без пузырей и заметных стыков.»</p>
+            <div class="roulette-author">
+              <span class="roulette-name">Имя клиента 2</span>
+              <span class="roulette-car">Марка авто / Услуга</span>
+            </div>
+          </div>
+
+          <div class="roulette-card" data-idx="2">
+            <p class="roulette-text">«Здесь будет реальный отзыв вашего клиента из Яндекс Карт о стойком гидрофобном эффекте керамического покрытия и чистоте боксов.»</p>
+            <div class="roulette-author">
+              <span class="roulette-name">Имя клиента 3</span>
+              <span class="roulette-car">Марка авто / Услуга</span>
+            </div>
+          </div>
+
+          <div class="roulette-card" data-idx="3">
+            <p class="roulette-text">«Здесь будет реальный отзыв вашего клиента из Яндекс Карт о деликатной химчистке салона, уходе за натуральной кожей и чистоте каждого элемента интерьера.»</p>
+            <div class="roulette-author">
+              <span class="roulette-name">Имя клиента 4</span>
+              <span class="roulette-car">Марка авто / Услуга</span>
+            </div>
           </div>
         </div>
 
-        <div class="review-item">
-          <p class="review-text">«Делали восстановительную полировку и химчистку светлого салона. Машина сияет как новая, ни одной голограммы на солнце. Работают на совесть.»</p>
-          <div class="review-author">
-            <span class="review-name">Александр К.</span>
-            <span class="review-car">Porsche Cayenne</span>
+        <div class="roulette-controls">
+          <div class="roulette-dots">
+            <div class="r-dot active" onclick="goRoulette(0)"></div>
+            <div class="r-dot" onclick="goRoulette(1)"></div>
+            <div class="r-dot" onclick="goRoulette(2)"></div>
+            <div class="r-dot" onclick="goRoulette(3)"></div>
+          </div>
+          <div class="roulette-arrows">
+            <button class="r-arrow" onclick="prevRoulette()">▲</button>
+            <button class="r-arrow" onclick="nextRoulette()">▼</button>
           </div>
         </div>
 
-        <div class="review-item">
-          <p class="review-text">«Приятно удивил уровень сервиса: замерили толщину ЛКП до и после, зафиксировали в акте, дали официальную гарантию. Буду обращаться еще.»</p>
-          <div class="review-author">
-            <span class="review-name">Дмитрий В.</span>
-            <span class="review-car">Mercedes-Benz E-Class</span>
-          </div>
-        </div>
-
-        <div style="margin-top:24px">
-          <a href="https://yandex.ru/maps" target="_blank" class="btn btn-amber-outline sm" style="width:100%">Смотреть все отзывы на Яндекс Картах</a>
-        </div>
+        <a href="https://yandex.ru/maps" target="_blank" rel="noopener" class="btn btn-outline sm" style="margin-top:20px;width:100%">Все отзывы на Яндекс Картах</a>
       </div>
 
-      <!-- КОЛОНКА КАРТЫ -->
+      <!-- КАРТА -->
       <div class="map-box">
-        <div class="map-iframe-container">
-          <iframe src="https://yandex.ru/map-widget/v1/?ll=37.617698%2C55.755864&z=12" title="Схема проезда к студии" loading="lazy"></iframe>
+        <div class="map-iframe-wrap">
+          <iframe src="https://yandex.ru/map-widget/v1/?ll=37.617635%2C55.755814&z=12" width="100%" height="100%" frameborder="0" allowfullscreen="true" loading="lazy"></iframe>
         </div>
-        <div class="map-info-bar">
+        <div class="map-info">
           <div>
-            <h4>г. Москва, ул. Автомобильная, д. 10</h4>
-            <p>Охраняемый закрытый бокс, удобный заезд</p>
+            <h4>Здесь будет ваша локация на Яндекс Картах</h4>
+            <p>Здесь будет точный адрес вашей студии, ориентиры и въезд в бокс</p>
           </div>
-          <a href="https://yandex.ru/maps" target="_blank" class="btn sm">Маршрут</a>
+          <a href="https://yandex.ru/maps" target="_blank" rel="noopener" class="btn sm">Маршрут</a>
         </div>
       </div>
 
@@ -862,13 +865,13 @@ input:focus {
   </div>
 </section>
 
-<!-- ОСТАВИТЬ ЗАЯВКУ -->
+<!-- ЗАЯВКА -->
 <section id="book" style="background:var(--bg-sub);border-top:1px solid var(--line);">
   <div class="wrap">
     <div class="form-box">
       <h2>Оставить заявку</h2>
-      <p style="color:var(--text-dim);margin-top:8px">Укажите контактные данные, и мастер перезвонит вам в течение 10 минут для консультации и согласования времени визита.</p>
-      
+      <p>Укажите контактные данные, и мастер перезвонит вам в течение 10 минут для консультации и согласования времени визита.</p>
+
       <form id="order-form" onsubmit="event.preventDefault(); document.getElementById('form-ok').style.display='block';">
         <div class="form-grid">
           <input required placeholder="Ваше имя" id="f-name">
@@ -884,12 +887,29 @@ input:focus {
 
 <!-- МОБИЛЬНЫЙ ПЛАВАЮЩИЙ БАР -->
 <div class="mobile-bar">
-  <a href="tel:+70000000000" class="btn btn-amber-outline sm" style="flex:1">Позвонить</a>
-  <a href="#book" class="btn sm" style="flex:1.4">Оставить заявку</a>
+  <a href="tel:+70000000000" class="btn btn-outline sm" style="flex:1">Позвонить</a>
+  <a href="#book" class="btn sm" style="flex:1">Записаться</a>
 </div>
 
+<!-- ФУТЕР -->
+<footer id="contacts">
+  <div class="wrap">
+    <div class="footer-row">
+      <div>
+        <div class="logo" style="margin-bottom:8px">Студия детейлинга</div>
+        <p>Премиальный уход, полировка и защита автомобилей в Москве.</p>
+      </div>
+      <div class="footer-contacts">
+        <a href="tel:+70000000000">+7 (000) 000-00-00</a>
+        <a href="https://wa.me/70000000000" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://yandex.ru/maps" target="_blank" rel="noopener">г. Москва, ул. Автомобильная, д. 10</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
 <script>
-// До / После ползунок
+// 1. Ползунок До / После
 const ba = document.getElementById('ba');
 const rg = document.getElementById('ba-range');
 if (rg && ba) {
@@ -898,22 +918,96 @@ if (rg && ba) {
   });
 }
 
-// Переключение табов услуг
-function switchCategory(catId, btn) {
+// 2. Переключение табов услуг
+function switchCategory(idx, btn) {
   document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  const target = document.getElementById('cat-' + catId);
+  const target = document.getElementById('cat-' + idx);
   if (target) target.style.display = 'grid';
   btn.classList.add('active');
 }
 
-// Быстрый выбор услуги с автоскроллом к форме
+// 3. Выбор услуги с автоподстановкой в форму
 function bookService(serviceName) {
   const carInput = document.getElementById('f-car');
-  if (carInput && !carInput.value.includes(serviceName)) {
+  if (carInput) {
     carInput.value = serviceName + (carInput.value ? ' - ' + carInput.value : '');
   }
   document.getElementById('book').scrollIntoView({ behavior: 'smooth' });
+}
+
+// 4. 3D РУЛЕТКА ОТЗЫВОВ
+const cards = document.querySelectorAll('.roulette-card');
+const dots = document.querySelectorAll('.r-dot');
+let currentR = 0;
+const totalR = cards.length;
+let rAutoTimer;
+
+function updateRoulette() {
+  cards.forEach((c, i) => {
+    c.classList.remove('active', 'prev', 'next', 'hidden');
+    if (i === currentR) {
+      c.classList.add('active');
+    } else if (i === (currentR - 1 + totalR) % totalR) {
+      c.classList.add('prev');
+    } else if (i === (currentR + 1) % totalR) {
+      c.classList.add('next');
+    } else {
+      c.classList.add('hidden');
+    }
+  });
+  dots.forEach((d, i) => {
+    d.classList.toggle('active', i === currentR);
+  });
+}
+
+function nextRoulette() {
+  currentR = (currentR + 1) % totalR;
+  updateRoulette();
+}
+
+function prevRoulette() {
+  currentR = (currentR - 1 + totalR) % totalR;
+  updateRoulette();
+}
+
+function goRoulette(idx) {
+  currentR = idx;
+  updateRoulette();
+}
+
+// Свайп и колесо мыши для рулетки
+const vp = document.getElementById('roulette-vp');
+let startY = 0;
+if (vp) {
+  vp.addEventListener('wheel', e => {
+    e.preventDefault();
+    if (e.deltaY > 0) nextRoulette();
+    else prevRoulette();
+  }, { passive: false });
+
+  vp.addEventListener('touchstart', e => {
+    startY = e.touches[0].clientY;
+  }, { passive: true });
+
+  vp.addEventListener('touchend', e => {
+    const diff = startY - e.changedTouches[0].clientY;
+    if (diff > 40) nextRoulette();
+    else if (diff < -40) prevRoulette();
+  }, { passive: true });
+}
+
+// Автопрокрутка раз в 6 секунд
+function startAuto() {
+  rAutoTimer = setInterval(nextRoulette, 6000);
+}
+function stopAuto() {
+  clearInterval(rAutoTimer);
+}
+startAuto();
+if (vp) {
+  vp.addEventListener('mouseenter', stopAuto);
+  vp.addEventListener('mouseleave', startAuto);
 }
 </script>
 </body>
